@@ -21219,6 +21219,8 @@ var SearchPage = function (_Component) {
       var touch = e.touches[0];
       var startY = touch.pageY;
 
+      e.preventDefault();
+
       this.setState({
         startY: startY
       });
