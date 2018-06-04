@@ -22497,7 +22497,6 @@ var Content = function (_Component) {
       var activeSearchPage = this.props.activeSearchPage;
       var detailPageInfo = this.props.detailPageInfo;
       var pageState = this.props.pageState;
-      console.log(detailPageInfo);
 
       if (!Object.keys(detailPageInfo).length || pageState !== 'detailPage') {
         return _react2.default.createElement(
@@ -23272,8 +23271,6 @@ var SearchPage = function (_Component) {
       this.setState({
         scrollY: scrollY
       });
-
-      console.log(this.state.scrollY);
 
       if (refreshState[searchType] === _CONFIG2.default.refresh.state.prepare) {
         this.refs.listWrapper.style.top = 0;
