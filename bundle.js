@@ -97,6 +97,9 @@ const CONFIG = {
   noSearchResource: {
     text: '无相关记录'
   },
+  nullImg: {
+    src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528109510447&di=8146537462e97ec23ab612ddb1fa691a&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fwh%3D450%2C600%2Fsign%3D316363b838fa828bd17695e7c82f6d02%2Fcb8065380cd791231a8073c9a6345982b2b7802f.jpg'
+  },
   refresh: {
     state: {
       prepare: {
@@ -142,7 +145,7 @@ const CONFIG = {
       searchResultArrName: 'books'
     },
     detailPage: {
-      returnBtnTxt: '<图书',
+      returnBtnTxt: '图书',
       headerText: '图书详情'
     }
   }, {
@@ -155,20 +158,20 @@ const CONFIG = {
       searchResultArrName: 'subjects'
     },
     detailPage: {
-      returnBtnTxt: '<电影',
+      returnBtnTxt: '电影',
       headerText: '电影详情'
     }
   }, {
     pageName: '音乐',
     icon: 'music',
     searchPage: {
-      defaultSearch: ['红歌', '情歌', '儿歌', '奥特曼'],
+      defaultSearch: ['情歌', '红歌', '儿歌', '奥特曼'],
       searchPlaceholder: '唱片名、表演者、ISRC',
       searchURL: 'https://api.douban.com/v2/music/search',
       searchResultArrName: 'musics'
     },
     detailPage: {
-      returnBtnTxt: '<音乐',
+      returnBtnTxt: '音乐',
       headerText: '音乐详情'
     }
   }]
@@ -21593,7 +21596,8 @@ var App = function (_Component) {
             detailPageInfo: detailPageInfo,
             activeSearchPage: this.state.searchPage,
             showSearchPage: this.showSearchPage.bind(this),
-            searchPageScrollY: this.state.searchPageScrollY
+            searchPageScrollY: this.state.searchPageScrollY,
+            pageState: this.state.page
           })
         )
       );
@@ -21890,12 +21894,17 @@ var Header = function (_Component) {
         'div',
         { className: 'header' },
         _react2.default.createElement(
-          'button',
+          'div',
           {
             onClick: this.handleClick.bind(this),
             className: 'header-btn'
           },
-          returnBtnTxt
+          _react2.default.createElement('i', { className: 'iconfont icon-back' }),
+          _react2.default.createElement(
+            'span',
+            null,
+            returnBtnTxt
+          )
         ),
         _react2.default.createElement(
           'div',
@@ -22435,6 +22444,431 @@ exports.default = Search;
 
 /***/ }),
 
+/***/ "./src/component/page/detail-page/content.jsx":
+/*!****************************************************!*\
+  !*** ./src/component/page/detail-page/content.jsx ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactLazyload = __webpack_require__(/*! react-lazyload */ "./node_modules/react-lazyload/lib/index.js");
+
+var _reactLazyload2 = _interopRequireDefault(_reactLazyload);
+
+var _CONFIG = __webpack_require__(/*! ../../../../CONFIG */ "./CONFIG.js");
+
+var _CONFIG2 = _interopRequireDefault(_CONFIG);
+
+__webpack_require__(/*! ./index.css */ "./src/component/page/detail-page/index.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Content = function (_Component) {
+  _inherits(Content, _Component);
+
+  function Content() {
+    _classCallCheck(this, Content);
+
+    return _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).apply(this, arguments));
+  }
+
+  _createClass(Content, [{
+    key: 'render',
+    value: function render() {
+      var activeSearchPage = this.props.activeSearchPage;
+      var detailPageInfo = this.props.detailPageInfo;
+      var pageState = this.props.pageState;
+      console.log(detailPageInfo);
+
+      if (!Object.keys(detailPageInfo).length || pageState !== 'detailPage') {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _CONFIG2.default.pageLoading.text
+        );
+      }
+
+      // 公共
+      var img = detailPageInfo.image || detailPageInfo.images.small;
+      var nullImg = _CONFIG2.default.nullImg;
+      var title = detailPageInfo.title || '无相关名称信息';
+      var rating = detailPageInfo.rating.average || '无相关评分信息';
+      var tags = detailPageInfo.tags || [];
+
+      switch (activeSearchPage) {
+        case _CONFIG2.default.page[0].pageName:
+          var authorArr = detailPageInfo.author.length ? detailPageInfo.author : ['无相关作者信息'];
+          var publisher = detailPageInfo.publisher || '无出版社信息';
+          var pubdate = detailPageInfo.pubdate || '无相关出版时间信息';
+          var price = detailPageInfo.price || '无相关价格信息';
+          var catalog = detailPageInfo.catalog || '无相关序言信息';
+          var summary = detailPageInfo.summary || '无相关简介信息';
+
+          return _react2.default.createElement(
+            'div',
+            { className: 'content--book' },
+            _react2.default.createElement(
+              'div',
+              { className: 'content-abstract-container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'img-wrapper' },
+                _react2.default.createElement(
+                  _reactLazyload2.default,
+                  { height: '100%' },
+                  _react2.default.createElement('img', { src: img, alt: '\u5C01\u9762', className: 'abstract-img' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'info-wrapper' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-tt' },
+                  '\u540D\u79F0: ',
+                  title
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'info-author' },
+                    '\u4F5C\u8005: '
+                  ),
+                  authorArr.map(function (item, index) {
+                    return _react2.default.createElement(
+                      'span',
+                      { key: index },
+                      'item'
+                    );
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-publisher' },
+                  '\u51FA\u7248\u793E: ',
+                  publisher
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-pubdate' },
+                  '\u65F6\u95F4: ',
+                  pubdate
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-rating' },
+                  '\u8BC4\u5206: ',
+                  rating
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-price' },
+                  '\u4EF7\u94B1: ',
+                  price
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-tags' },
+                  tags.map(function (item, index) {
+                    if (index < 3) {
+                      return _react2.default.createElement(
+                        'span',
+                        { className: 'tags-item', key: index },
+                        item.name
+                      );
+                    }
+                  })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'content-detail-container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'detail-catalog' },
+                _react2.default.createElement(
+                  'h1',
+                  { className: 'detail-tt' },
+                  '\u5E8F\u8A00'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'detail-p' },
+                  catalog
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'detail-summary' },
+                _react2.default.createElement(
+                  'h1',
+                  { className: 'detail-tt' },
+                  '\u7B80\u4ECB'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'detail-p' },
+                  summary
+                )
+              )
+            )
+          );
+
+        case _CONFIG2.default.page[1].pageName:
+          var genres = detailPageInfo.genres || [];
+          var year = detailPageInfo.year || '无相关上映年份信息';
+          var directorsArr = detailPageInfo.directors.length ? detailPageInfo.directors : [{ name: '无相关导演信息' }];
+          var originalTitle = detailPageInfo.original_title || '';
+          var casts = detailPageInfo.casts.length ? detailPageInfo.casts : [{ avatars: { small: nullImg.src } }];
+
+          return _react2.default.createElement(
+            'div',
+            { className: 'content--movie' },
+            _react2.default.createElement(
+              'div',
+              { className: 'content-abstract-container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'img-wrapper' },
+                _react2.default.createElement(
+                  _reactLazyload2.default,
+                  { height: '100%' },
+                  _react2.default.createElement('img', { src: img, alt: '\u5C01\u9762', className: 'abstract-img' })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'content-detail-container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'detail-summary' },
+                _react2.default.createElement(
+                  'h1',
+                  { className: 'detail-tt' },
+                  '\u7B80\u4ECB'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-tt' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    '\u540D\u79F0: ',
+                    title,
+                    ' '
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'info-tags' },
+                    genres.map(function (item, index) {
+                      if (index < 3) {
+                        return _react2.default.createElement(
+                          'span',
+                          { className: 'tags-item', key: index },
+                          item
+                        );
+                      }
+                    })
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-year' },
+                  '\u4E0A\u6620\u65F6\u95F4: ',
+                  year
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-directors-wrapper' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    '\u5BFC\u6F14: '
+                  ),
+                  directorsArr.map(function (item, index) {
+                    return _react2.default.createElement(
+                      'span',
+                      { key: index, className: 'info-directors' },
+                      item.name + '  '
+                    );
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-original-tt' },
+                  title + '(' + originalTitle + ')'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'detail-casts-container' },
+                _react2.default.createElement(
+                  'h1',
+                  { className: 'detail-tt' },
+                  '\u6F14\u5458'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'detail-casts-avartar-container' },
+                  casts.map(function (item, index) {
+                    return _react2.default.createElement(
+                      'div',
+                      { key: index, className: 'casts-avatar-wrapper' },
+                      _react2.default.createElement(
+                        _reactLazyload2.default,
+                        { height: '100%' },
+                        _react2.default.createElement('img', { src: item.avatars ? item.avatars.small : nullImg.src, alt: '\u6F14\u5458', className: 'casts-avatar' })
+                      )
+                    );
+                  })
+                )
+              )
+            )
+          );
+
+        case _CONFIG2.default.page[2].pageName:
+          var authorMusic = detailPageInfo.author ? detailPageInfo.author[0] : { name: '无相关作者信息' };
+          var publisherMusic = detailPageInfo.attrs.publisher ? detailPageInfo.attrs.publisher[0] : '无相关发布商信息';
+          var pubdateMusic = detailPageInfo.attrs.pubdate ? detailPageInfo.attrs.pubdate[0] : '无相关发布时间信息';
+          var tracksArr = detailPageInfo.attrs.tracks ? detailPageInfo.attrs.tracks : ['无相关专辑信息'];
+
+          return _react2.default.createElement(
+            'div',
+            { className: 'content--music' },
+            _react2.default.createElement(
+              'div',
+              { className: 'content-abstract-container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'img-wrapper' },
+                _react2.default.createElement(
+                  _reactLazyload2.default,
+                  { height: '100%' },
+                  _react2.default.createElement('img', { src: img, alt: '\u5C01\u9762', className: 'abstract-img' })
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'info-wrapper' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-tt' },
+                  _react2.default.createElement(
+                    'span',
+                    null,
+                    '\u540D\u79F0: ',
+                    title,
+                    ' '
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'info-tags' },
+                    tags.map(function (item, index) {
+                      return _react2.default.createElement(
+                        'span',
+                        { className: 'tags-item', key: index },
+                        item.name
+                      );
+                    })
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-author' },
+                  '\u4F5C\u8005: ',
+                  authorMusic.name
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-publisher' },
+                  '\u53D1\u5E03\u5546: ',
+                  publisherMusic
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-pubdate' },
+                  '\u53D1\u5E03\u65F6\u95F4: ',
+                  pubdateMusic
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'info-rating' },
+                  '\u8BC4\u5206: ',
+                  rating
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'content-detail-container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'detail-summary' },
+                _react2.default.createElement(
+                  'h1',
+                  { className: 'detail-tt' },
+                  '\u7B80\u4ECB'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'detail-tracks' },
+                _react2.default.createElement(
+                  'h1',
+                  { className: 'detail-tt' },
+                  '\u4E13\u8F91'
+                ),
+                tracksArr.map(function (item, index) {
+                  return _react2.default.createElement(
+                    'div',
+                    { key: index, className: 'tracks-item' },
+                    item
+                  );
+                })
+              )
+            )
+          );
+
+        default:
+          return _react2.default.createElement(
+            'div',
+            null,
+            'wrong page...'
+          );
+      }
+    }
+  }]);
+
+  return Content;
+}(_react.Component);
+
+exports.default = Content;
+
+/***/ }),
+
 /***/ "./src/component/page/detail-page/index.css":
 /*!**************************************************!*\
   !*** ./src/component/page/detail-page/index.css ***!
@@ -22472,6 +22906,10 @@ var _header = __webpack_require__(/*! ../../components/header */ "./src/componen
 
 var _header2 = _interopRequireDefault(_header);
 
+var _content = __webpack_require__(/*! ./content */ "./src/component/page/detail-page/content.jsx");
+
+var _content2 = _interopRequireDefault(_content);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22501,6 +22939,7 @@ var DetailPage = function (_Component) {
     value: function render() {
       var detailPageInfo = this.props.detailPageInfo; // 详情页面信息内容
       var activeSearchPage = this.props.activeSearchPage; // 获取详情页对应的活动页名称
+      var pageState = this.props.pageState; // 获取主页显示页面状态
 
       return _react2.default.createElement(
         'div',
@@ -22510,251 +22949,11 @@ var DetailPage = function (_Component) {
           showSearchPage: this.showSearchPage.bind(this),
           searchPageScrollY: this.props.searchPageScrollY
         }),
-        _react2.default.createElement(
-          'div',
-          null,
-          'this is detail page'
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          'title: ',
-          detailPageInfo.title
-        )
+        _react2.default.createElement(_content2.default, {
+          activeSearchPage: activeSearchPage,
+          detailPageInfo: detailPageInfo,
+          pageState: pageState
+        })
       );
     }
   }]);
