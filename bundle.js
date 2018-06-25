@@ -38983,17 +38983,6 @@ const getLikeList = (likeList) => {
 
 /***/ }),
 
-/***/ "./src/assets/lib/reset.css":
-/*!**********************************!*\
-  !*** ./src/assets/lib/reset.css ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/assets/util.js":
 /*!****************************!*\
   !*** ./src/assets/util.js ***!
@@ -39134,17 +39123,6 @@ const getJson = async (type, text, start) => {
 
 /***/ }),
 
-/***/ "./src/components/LikeButton/index.css":
-/*!*********************************************!*\
-  !*** ./src/components/LikeButton/index.css ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/components/LikeButton/index.jsx":
 /*!*********************************************!*\
   !*** ./src/components/LikeButton/index.jsx ***!
@@ -39164,8 +39142,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(/*! ./index.css */ "./src/components/LikeButton/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39199,7 +39175,7 @@ var BackButton = function (_Component) {
       return _react2.default.createElement(
         'div',
         {
-          className: 'header-like-btn',
+          className: 'likeButton',
           onClick: function onClick() {
             return _this2.handleClick();
           }
@@ -39218,17 +39194,6 @@ var BackButton = function (_Component) {
 }(_react.Component);
 
 exports.default = BackButton;
-
-/***/ }),
-
-/***/ "./src/components/Logo/index.css":
-/*!***************************************!*\
-  !*** ./src/components/Logo/index.css ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -39251,8 +39216,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(/*! ./index.css */ "./src/components/Logo/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39279,7 +39242,7 @@ var Logo = function (_Component) {
         { className: 'logo-wrapper' },
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'logo' },
           '\u53E3\u888B\u8C46\u74E3V2.0'
         )
       );
@@ -39290,17 +39253,6 @@ var Logo = function (_Component) {
 }(_react.Component);
 
 exports.default = Logo;
-
-/***/ }),
-
-/***/ "./src/components/backButton/index.css":
-/*!*********************************************!*\
-  !*** ./src/components/backButton/index.css ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -39325,8 +39277,6 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var _react2 = _interopRequireDefault(_react);
 
 var _util = __webpack_require__(/*! ../../assets/util */ "./src/assets/util.js");
-
-__webpack_require__(/*! ./index.css */ "./src/components/backButton/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39361,7 +39311,7 @@ var BackButton = function (_Component) {
         'div',
         {
           onClick: this.handleClick.bind(this),
-          className: 'header-back-btn'
+          className: 'backButton'
         },
         _react2.default.createElement('i', { className: 'iconfont icon-back' }),
         _react2.default.createElement(
@@ -39559,17 +39509,6 @@ exports.default = BookDetail;
 
 /***/ }),
 
-/***/ "./src/components/detail/index.css":
-/*!*****************************************!*\
-  !*** ./src/components/detail/index.css ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/components/detail/index.jsx":
 /*!*****************************************!*\
   !*** ./src/components/detail/index.jsx ***!
@@ -39589,8 +39528,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(/*! ./index.css */ "./src/components/detail/index.css");
 
 var _bookDetail = __webpack_require__(/*! ./bookDetail */ "./src/components/detail/bookDetail/index.jsx");
 
@@ -39629,14 +39566,29 @@ var Detail = function (_Component) {
           detail = _props.detail;
 
 
+      var detailComponent = void 0;
+
       switch (pageId) {
         case 'book':
-          return _react2.default.createElement(_bookDetail2.default, { detail: detail });
+          detailComponent = _react2.default.createElement(_bookDetail2.default, { detail: detail });
+          break;
         case 'movie':
-          return _react2.default.createElement(_movieDetail2.default, { detail: detail });
+          detailComponent = _react2.default.createElement(_movieDetail2.default, { detail: detail });
+          break;
         case 'music':
-          return _react2.default.createElement(_musicDetail2.default, { detail: detail });
+          detailComponent = _react2.default.createElement(_musicDetail2.default, { detail: detail });
+          break;
       }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'detail-wrapper' },
+        _react2.default.createElement(
+          'div',
+          { className: 'detail' },
+          detailComponent
+        )
+      );
     }
   }]);
 
@@ -39981,17 +39933,6 @@ exports.default = MusicDetail;
 
 /***/ }),
 
-/***/ "./src/components/header/index.css":
-/*!*****************************************!*\
-  !*** ./src/components/header/index.css ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/components/header/index.jsx":
 /*!*****************************************!*\
   !*** ./src/components/header/index.jsx ***!
@@ -40013,8 +39954,6 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var _react2 = _interopRequireDefault(_react);
 
 var _util = __webpack_require__(/*! ../../assets/util */ "./src/assets/util.js");
-
-__webpack_require__(/*! ./index.css */ "./src/components/header/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40042,12 +39981,16 @@ var Header = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'header' },
-        this.props.children,
+        { className: 'header-wrapper' },
         _react2.default.createElement(
           'div',
-          { className: 'header-text' },
-          headerText
+          { className: 'header' },
+          this.props.children,
+          _react2.default.createElement(
+            'div',
+            { className: 'header-text' },
+            headerText
+          )
         )
       );
     }
@@ -40057,17 +40000,6 @@ var Header = function (_Component) {
 }(_react.Component);
 
 exports.default = Header;
-
-/***/ }),
-
-/***/ "./src/components/likeList/index.css":
-/*!*******************************************!*\
-  !*** ./src/components/likeList/index.css ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -40092,8 +40024,6 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var _react2 = _interopRequireDefault(_react);
 
 var _util = __webpack_require__(/*! ../../assets/util */ "./src/assets/util.js");
-
-__webpack_require__(/*! ./index.css */ "./src/components/likeList/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40157,16 +40087,20 @@ var LikeList = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'likeList' },
+        { className: 'likeList-container' },
         _react2.default.createElement(
           'div',
-          { className: 'likeList-tt' },
-          '\u6211\u7684\u6536\u85CF'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'likeList-wrapper' },
-          likeListComponent
+          { className: 'likeList' },
+          _react2.default.createElement(
+            'div',
+            { className: 'likeList-tt' },
+            '\u6211\u7684\u6536\u85CF'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'likeList-wrapper' },
+            likeListComponent
+          )
         )
       );
     }
@@ -40377,17 +40311,6 @@ exports.default = Item;
 
 /***/ }),
 
-/***/ "./src/components/list/index.css":
-/*!***************************************!*\
-  !*** ./src/components/list/index.css ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/components/list/index.jsx":
 /*!***************************************!*\
   !*** ./src/components/list/index.jsx ***!
@@ -40411,8 +40334,6 @@ var _react2 = _interopRequireDefault(_react);
 var _config = __webpack_require__(/*! ../../config */ "./src/config.js");
 
 var _config2 = _interopRequireDefault(_config);
-
-__webpack_require__(/*! ./index.css */ "./src/components/list/index.css");
 
 var _bookList = __webpack_require__(/*! ./bookList */ "./src/components/list/bookList/index.jsx");
 
@@ -40455,8 +40376,10 @@ var List = function (_Component) {
       var pageLoadingText = _config2.default.pageLoading.text;
       var noSearchResourceText = _config2.default.noSearchResource.text;
 
+      var listComponent = void 0;
+
       if (list === undefined) {
-        return _react2.default.createElement(
+        listComponent = _react2.default.createElement(
           'div',
           { className: 'loading-wrapper' },
           _react2.default.createElement(
@@ -40482,7 +40405,7 @@ var List = function (_Component) {
           )
         );
       } else if (!list.length) {
-        return _react2.default.createElement(
+        listComponent = _react2.default.createElement(
           'div',
           { className: 'none-wrapper' },
           _react2.default.createElement(
@@ -40491,16 +40414,29 @@ var List = function (_Component) {
             noSearchResourceText
           )
         );
+      } else {
+        switch (pageId) {
+          case 'book':
+            listComponent = _react2.default.createElement(_bookList2.default, { list: list, pageId: pageId, getDetail: getDetail, listClick: listClick });
+            break;
+          case 'movie':
+            listComponent = _react2.default.createElement(_movieList2.default, { list: list, pageId: pageId, getDetail: getDetail, listClick: listClick });
+            break;
+          case 'music':
+            listComponent = _react2.default.createElement(_musicList2.default, { list: list, pageId: pageId, getDetail: getDetail, listClick: listClick });
+            break;
+        }
       }
 
-      switch (pageId) {
-        case 'book':
-          return _react2.default.createElement(_bookList2.default, { list: list, pageId: pageId, getDetail: getDetail, listClick: listClick });
-        case 'movie':
-          return _react2.default.createElement(_movieList2.default, { list: list, pageId: pageId, getDetail: getDetail, listClick: listClick });
-        case 'music':
-          return _react2.default.createElement(_musicList2.default, { list: list, pageId: pageId, getDetail: getDetail, listClick: listClick });
-      }
+      return _react2.default.createElement(
+        'div',
+        { className: 'searchlist-wrapper' },
+        _react2.default.createElement(
+          'div',
+          { className: 'search-list' },
+          listComponent
+        )
+      );
     }
   }]);
 
@@ -40896,17 +40832,6 @@ exports.default = Item;
 
 /***/ }),
 
-/***/ "./src/components/navBar/index.css":
-/*!*****************************************!*\
-  !*** ./src/components/navBar/index.css ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/components/navBar/index.jsx":
 /*!*****************************************!*\
   !*** ./src/components/navBar/index.jsx ***!
@@ -40930,8 +40855,6 @@ var _react2 = _interopRequireDefault(_react);
 var _config = __webpack_require__(/*! ../../config */ "./src/config.js");
 
 var _config2 = _interopRequireDefault(_config);
-
-__webpack_require__(/*! ./index.css */ "./src/components/navBar/index.css");
 
 var _item = __webpack_require__(/*! ./item */ "./src/components/navBar/item.jsx");
 
@@ -40969,19 +40892,23 @@ var NavBar = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'footer' },
-        page.map(function (item, index) {
-          return _react2.default.createElement(_item2.default, {
-            item: item,
-            key: index,
-            changePage: changePage,
-            pageId: pageId,
-            list: list,
-            getList: getList,
-            searchText: searchText,
-            navBarClick: navBarClick
-          });
-        })
+        { className: 'navBar-wrapper' },
+        _react2.default.createElement(
+          'div',
+          { className: 'navBar' },
+          page.map(function (item, index) {
+            return _react2.default.createElement(_item2.default, {
+              item: item,
+              key: index,
+              changePage: changePage,
+              pageId: pageId,
+              list: list,
+              getList: getList,
+              searchText: searchText,
+              navBarClick: navBarClick
+            });
+          })
+        )
       );
     }
   }]);
@@ -41055,15 +40982,15 @@ var Item = function (_Component) {
         _reactRouterDom.Link,
         {
           to: '/' + pageId + '/search',
-          className: 'footer-item ' + activeCls,
+          className: 'navBar-item ' + activeCls,
           onClick: function onClick() {
             return _this2.handleClick(pageId);
           }
         },
-        _react2.default.createElement('i', { className: 'footer-item-icon iconfont icon-' + icon }),
+        _react2.default.createElement('i', { className: 'navBar-item-icon iconfont icon-' + icon }),
         _react2.default.createElement(
           'div',
-          { className: 'footer-item-text' },
+          { className: 'navBar-item-text' },
           name
         )
       );
@@ -41074,17 +41001,6 @@ var Item = function (_Component) {
 }(_react.Component);
 
 exports.default = Item;
-
-/***/ }),
-
-/***/ "./src/components/search/index.css":
-/*!*****************************************!*\
-  !*** ./src/components/search/index.css ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -41107,8 +41023,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(/*! ./index.css */ "./src/components/search/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41159,24 +41073,28 @@ var Search = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'search-wrapper' },
-        _react2.default.createElement('input', {
-          type: 'text',
-          className: 'search-input',
-          ref: 'search',
-          placeholder: placeholder,
-          onKeyUp: function onKeyUp(e) {
-            return _this2.handleKeyUp(e, pageId);
-          }
-        }),
-        _react2.default.createElement('i', { className: 'iconfont icon-search' }),
-        _react2.default.createElement('input', {
-          type: 'button',
-          value: '\u641C\u7D22',
-          className: 'search-btn',
-          onClick: function onClick() {
-            return _this2.handleClick(pageId);
-          }
-        })
+        _react2.default.createElement(
+          'div',
+          { className: 'search' },
+          _react2.default.createElement('input', {
+            type: 'text',
+            className: 'search-input',
+            ref: 'search',
+            placeholder: placeholder,
+            onKeyUp: function onKeyUp(e) {
+              return _this2.handleKeyUp(e, pageId);
+            }
+          }),
+          _react2.default.createElement('i', { className: 'iconfont icon-search' }),
+          _react2.default.createElement('input', {
+            type: 'button',
+            value: '\u641C\u7D22',
+            className: 'search-btn',
+            onClick: function onClick() {
+              return _this2.handleClick(pageId);
+            }
+          })
+        )
       );
     }
   }]);
@@ -41185,17 +41103,6 @@ var Search = function (_Component) {
 }(_react.Component);
 
 exports.default = Search;
-
-/***/ }),
-
-/***/ "./src/components/slideSlot/index.css":
-/*!********************************************!*\
-  !*** ./src/components/slideSlot/index.css ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -41218,8 +41125,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(/*! ./index.css */ "./src/components/slideSlot/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41306,28 +41211,32 @@ var SlideSlot = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'search-container' },
+        { className: 'slideSlot-container' },
         _react2.default.createElement(
           'div',
-          { className: 'list-container', ref: 'listContainer' },
+          { className: 'slideSlot' },
           _react2.default.createElement(
             'div',
-            { className: 'refresh', ref: 'refresh' },
+            { className: 'list-container', ref: 'listContainer' },
             _react2.default.createElement(
               'div',
-              { className: 'refresh-txt' },
-              refreshText
+              { className: 'refresh', ref: 'refresh' },
+              _react2.default.createElement(
+                'div',
+                { className: 'refresh-txt' },
+                refreshText
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'list-wrapper', ref: 'listWrapper' },
+              this.props.children
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'loadmore', ref: 'loadmore' },
+              loadmoreText
             )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'list-wrapper', ref: 'listWrapper' },
-            this.props.children
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'loadmore', ref: 'loadmore' },
-            loadmoreText
           )
         )
       );
@@ -41338,17 +41247,6 @@ var SlideSlot = function (_Component) {
 }(_react.Component);
 
 exports.default = SlideSlot;
-
-/***/ }),
-
-/***/ "./src/components/toHome/index.css":
-/*!*****************************************!*\
-  !*** ./src/components/toHome/index.css ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -41371,8 +41269,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(/*! ./index.css */ "./src/components/toHome/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41403,10 +41299,10 @@ var ToHome = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { onClick: function onClick() {
+        { className: 'toHome-wrapper', onClick: function onClick() {
             return _this2.handleClick();
           } },
-        _react2.default.createElement('i', { className: 'gohome iconfont icon-home' })
+        _react2.default.createElement('i', { className: 'toHome iconfont icon-home' })
       );
     }
   }]);
@@ -41415,17 +41311,6 @@ var ToHome = function (_Component) {
 }(_react.Component);
 
 exports.default = ToHome;
-
-/***/ }),
-
-/***/ "./src/components/toTop/index.css":
-/*!****************************************!*\
-  !*** ./src/components/toTop/index.css ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -41448,8 +41333,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(/*! ./index.css */ "./src/components/toTop/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41480,10 +41363,10 @@ var ToTop = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { onClick: function onClick() {
+        { className: 'toTop-wrapper', onClick: function onClick() {
             return _this2.handleClick();
           } },
-        _react2.default.createElement('i', { className: 'gototop iconfont icon-top' })
+        _react2.default.createElement('i', { className: 'toTop iconfont icon-top' })
       );
     }
   }]);
@@ -41621,17 +41504,6 @@ const config = {
 
 /***/ }),
 
-/***/ "./src/containers/App/index.css":
-/*!**************************************!*\
-  !*** ./src/containers/App/index.css ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/containers/App/index.jsx":
 /*!**************************************!*\
   !*** ./src/containers/App/index.jsx ***!
@@ -41655,12 +41527,6 @@ var _react2 = _interopRequireDefault(_react);
 var _router = __webpack_require__(/*! ../../router */ "./src/router/index.jsx");
 
 var _router2 = _interopRequireDefault(_router);
-
-__webpack_require__(/*! ../../assets/lib/reset.css */ "./src/assets/lib/reset.css");
-
-__webpack_require__(/*! ../../assets/fonts/iconfont.css */ "./src/assets/fonts/iconfont.css");
-
-__webpack_require__(/*! ./index.css */ "./src/containers/App/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41697,17 +41563,6 @@ exports.default = App;
 
 /***/ }),
 
-/***/ "./src/containers/detailPage/index.css":
-/*!*********************************************!*\
-  !*** ./src/containers/detailPage/index.css ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/containers/detailPage/index.jsx":
 /*!*********************************************!*\
   !*** ./src/containers/detailPage/index.jsx ***!
@@ -41735,8 +41590,6 @@ var _history = __webpack_require__(/*! ../../router/history */ "./src/router/his
 var _history2 = _interopRequireDefault(_history);
 
 var _actions = __webpack_require__(/*! ../../actions */ "./src/actions/index.js");
-
-__webpack_require__(/*! ./index.css */ "./src/containers/detailPage/index.css");
 
 var _header = __webpack_require__(/*! ../../components/header */ "./src/components/header/index.jsx");
 
@@ -41842,7 +41695,7 @@ var DetailPage = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'detailPage' },
         _react2.default.createElement(
           _header2.default,
           { pageId: pageId },
@@ -41895,17 +41748,6 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 
-/***/ "./src/containers/indexPage/index.css":
-/*!********************************************!*\
-  !*** ./src/containers/indexPage/index.css ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/containers/indexPage/index.jsx":
 /*!********************************************!*\
   !*** ./src/containers/indexPage/index.jsx ***!
@@ -41935,8 +41777,6 @@ var _history2 = _interopRequireDefault(_history);
 var _util = __webpack_require__(/*! ../../assets/util */ "./src/assets/util.js");
 
 var _actions = __webpack_require__(/*! ../../actions */ "./src/actions/index.js");
-
-__webpack_require__(/*! ./index.css */ "./src/containers/indexPage/index.css");
 
 var _Logo = __webpack_require__(/*! ../../components/Logo */ "./src/components/Logo/index.jsx");
 
@@ -42021,20 +41861,16 @@ var IndexPage = function (_Component) {
         'div',
         { className: 'indexPage' },
         _react2.default.createElement(_Logo2.default, null),
-        _react2.default.createElement(
-          'div',
-          { className: 'search-wrapper' },
-          _react2.default.createElement(_search2.default, {
-            pageId: pageId,
-            getList: getList,
-            placeholder: placeholder,
-            searchText: searchText,
-            changeSearchText: changeSearchText,
-            getInfo: function getInfo(pageId, value) {
-              return _this2.getInfo(pageId, value);
-            }
-          })
-        ),
+        _react2.default.createElement(_search2.default, {
+          pageId: pageId,
+          getList: getList,
+          placeholder: placeholder,
+          searchText: searchText,
+          changeSearchText: changeSearchText,
+          getInfo: function getInfo(pageId, value) {
+            return _this2.getInfo(pageId, value);
+          }
+        }),
         _react2.default.createElement(_likeList2.default, {
           likeList: likeList,
           likeListClick: function likeListClick(item) {
@@ -42102,17 +41938,6 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 
-/***/ "./src/containers/searchPage/index.css":
-/*!*********************************************!*\
-  !*** ./src/containers/searchPage/index.css ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./src/containers/searchPage/index.jsx":
 /*!*********************************************!*\
   !*** ./src/containers/searchPage/index.jsx ***!
@@ -42146,8 +41971,6 @@ var _config2 = _interopRequireDefault(_config);
 var _util = __webpack_require__(/*! ../../assets/util */ "./src/assets/util.js");
 
 var _actions = __webpack_require__(/*! ../../actions */ "./src/actions/index.js");
-
-__webpack_require__(/*! ./index.css */ "./src/containers/searchPage/index.css");
 
 var _search = __webpack_require__(/*! ../../components/search */ "./src/components/search/index.jsx");
 
@@ -42623,6 +42446,10 @@ var _history2 = _interopRequireDefault(_history);
 var _App = __webpack_require__(/*! ./containers/App */ "./src/containers/App/index.jsx");
 
 var _App2 = _interopRequireDefault(_App);
+
+__webpack_require__(/*! ./scss/style.scss */ "./src/scss/style.scss");
+
+__webpack_require__(/*! ./assets/fonts/iconfont.css */ "./src/assets/fonts/iconfont.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43225,6 +43052,17 @@ var Router = function (_Component) {
 }(_react.Component);
 
 exports.default = Router;
+
+/***/ }),
+
+/***/ "./src/scss/style.scss":
+/*!*****************************!*\
+  !*** ./src/scss/style.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
