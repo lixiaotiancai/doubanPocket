@@ -41602,6 +41602,8 @@ var _toHome2 = _interopRequireDefault(_toHome);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -41619,14 +41621,35 @@ var DetailPage = function (_Component) {
 
   _createClass(DetailPage, [{
     key: 'backButtonClick',
-    value: async function backButtonClick() {
-      var pageId = this.props.pageId;
+    value: function () {
+      var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+        var pageId;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                pageId = this.props.pageId;
+                _context.next = 3;
+                return _history2.default.push('/' + pageId + '/search');
 
+              case 3:
 
-      await _history2.default.push('/' + pageId + '/search');
+                window.scrollTo(0, this.props.scrollY);
 
-      window.scrollTo(0, this.props.scrollY);
-    }
+              case 4:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function backButtonClick() {
+        return _ref.apply(this, arguments);
+      }
+
+      return backButtonClick;
+    }()
   }, {
     key: 'likeButtonIconCls',
     value: function likeButtonIconCls(detail, likeList) {
@@ -41781,6 +41804,8 @@ var _likeList2 = _interopRequireDefault(_likeList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -41798,40 +41823,93 @@ var IndexPage = function (_Component) {
 
   _createClass(IndexPage, [{
     key: 'getInfo',
-    value: async function getInfo(pageId, value) {
-      try {
-        var _props = this.props,
-            getList = _props.getList,
-            _changeSearchText = _props.changeSearchText,
-            changeStartOffset = _props.changeStartOffset;
+    value: function () {
+      var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(pageId, value) {
+        var _props, getList, _changeSearchText, changeStartOffset, searchText, json, arrName;
+
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _props = this.props, getList = _props.getList, _changeSearchText = _props.changeSearchText, changeStartOffset = _props.changeStartOffset;
+                _context.next = 4;
+                return _changeSearchText(value);
+
+              case 4:
+
+                _history2.default.push('/' + pageId + '/search');
+
+                searchText = this.props.searchText;
+                _context.next = 8;
+                return (0, _util.getJson)(pageId, searchText, 0);
+
+              case 8:
+                json = _context.sent;
+                arrName = (0, _util.getSearchResultArrName)(pageId);
 
 
-        await _changeSearchText(value);
+                if (changeStartOffset) changeStartOffset(pageId, 0);
 
-        _history2.default.push('/' + pageId + '/search');
+                getList(pageId, json[arrName]);
+                _context.next = 17;
+                break;
 
-        var searchText = this.props.searchText;
-        var json = await (0, _util.getJson)(pageId, searchText, 0);
-        var arrName = (0, _util.getSearchResultArrName)(pageId);
+              case 14:
+                _context.prev = 14;
+                _context.t0 = _context['catch'](0);
 
-        if (changeStartOffset) changeStartOffset(pageId, 0);
+                console.log(_context.t0);
 
-        getList(pageId, json[arrName]);
-      } catch (err) {
-        console.log(err);
+              case 17:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 14]]);
+      }));
+
+      function getInfo(_x, _x2) {
+        return _ref.apply(this, arguments);
       }
-    }
+
+      return getInfo;
+    }()
   }, {
     key: 'likeListClick',
-    value: async function likeListClick(item) {
-      var _props2 = this.props,
-          changePage = _props2.changePage,
-          getDetail = _props2.getDetail;
+    value: function () {
+      var _ref2 = _asyncToGenerator(regeneratorRuntime.mark(function _callee2(item) {
+        var _props2, changePage, getDetail;
 
-      await changePage(item.pageId);
-      await getDetail(item.pageId, item);
-      _history2.default.push('/' + item.pageId + '/detail');
-    }
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _props2 = this.props, changePage = _props2.changePage, getDetail = _props2.getDetail;
+                _context2.next = 3;
+                return changePage(item.pageId);
+
+              case 3:
+                _context2.next = 5;
+                return getDetail(item.pageId, item);
+
+              case 5:
+                _history2.default.push('/' + item.pageId + '/detail');
+
+              case 6:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function likeListClick(_x3) {
+        return _ref2.apply(this, arguments);
+      }
+
+      return likeListClick;
+    }()
   }, {
     key: 'render',
     value: function render() {
@@ -41987,6 +42065,8 @@ var _toHome2 = _interopRequireDefault(_toHome);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -42004,160 +42084,315 @@ var SearchPage = function (_Component) {
 
   _createClass(SearchPage, [{
     key: 'getInfo',
-    value: async function getInfo(pageId, value) {
-      try {
-        var _props = this.props,
-            getList = _props.getList,
-            _changeSearchText = _props.changeSearchText,
-            changeStartOffset = _props.changeStartOffset;
+    value: function () {
+      var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(pageId, value) {
+        var _props, getList, _changeSearchText, changeStartOffset, searchText, json, arrName;
+
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _props = this.props, getList = _props.getList, _changeSearchText = _props.changeSearchText, changeStartOffset = _props.changeStartOffset;
+                _context.next = 4;
+                return _changeSearchText(value);
+
+              case 4:
+                searchText = this.props.searchText;
+                _context.next = 7;
+                return (0, _util.getJson)(pageId, searchText, 0);
+
+              case 7:
+                json = _context.sent;
+                arrName = (0, _util.getSearchResultArrName)(pageId);
 
 
-        await _changeSearchText(value);
+                changeStartOffset(pageId, 0);
 
-        var searchText = this.props.searchText;
-        var json = await (0, _util.getJson)(pageId, searchText, 0);
-        var arrName = (0, _util.getSearchResultArrName)(pageId);
+                getList(pageId, json[arrName]);
+                _context.next = 16;
+                break;
 
-        changeStartOffset(pageId, 0);
+              case 13:
+                _context.prev = 13;
+                _context.t0 = _context['catch'](0);
 
-        getList(pageId, json[arrName]);
-      } catch (err) {
-        console.log(err);
+                console.log(_context.t0);
+
+              case 16:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 13]]);
+      }));
+
+      function getInfo(_x, _x2) {
+        return _ref.apply(this, arguments);
       }
-    }
+
+      return getInfo;
+    }()
   }, {
     key: 'slideSlotTouchStart',
-    value: async function slideSlotTouchStart(e) {
-      var changeStartY = this.props.changeStartY;
+    value: function () {
+      var _ref2 = _asyncToGenerator(regeneratorRuntime.mark(function _callee2(e) {
+        var changeStartY, touch, startY;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                changeStartY = this.props.changeStartY;
+                touch = e.touches[0];
+                startY = touch.pageY;
 
-      var touch = e.touches[0];
-      var startY = touch.pageY;
 
-      changeStartY(startY);
-    }
+                changeStartY(startY);
+
+              case 4:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function slideSlotTouchStart(_x3) {
+        return _ref2.apply(this, arguments);
+      }
+
+      return slideSlotTouchStart;
+    }()
   }, {
     key: 'slideSlotTouchMove',
-    value: async function slideSlotTouchMove(e, listWrapper) {
-      var _props2 = this.props,
-          pageId = _props2.pageId,
-          searchText = _props2.searchText,
-          list = _props2.list,
-          getList = _props2.getList,
-          startY = _props2.startY,
-          loadmoreSwitch = _props2.loadmoreSwitch,
-          offset = _props2.offset,
-          changeRefreshStatus = _props2.changeRefreshStatus,
-          changeLoadMoreStatus = _props2.changeLoadMoreStatus,
-          changeLoadMoreSwitch = _props2.changeLoadMoreSwitch,
-          changeStartOffset = _props2.changeStartOffset;
+    value: function () {
+      var _ref3 = _asyncToGenerator(regeneratorRuntime.mark(function _callee3(e, listWrapper) {
+        var _props2, pageId, searchText, list, getList, startY, loadmoreSwitch, offset, changeRefreshStatus, changeLoadMoreStatus, changeLoadMoreSwitch, changeStartOffset, touch, moveY, json, arrName, arr;
 
-      var touch = e.touches[0];
-      var moveY = touch.pageY - startY; // move时的Y坐标
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _props2 = this.props, pageId = _props2.pageId, searchText = _props2.searchText, list = _props2.list, getList = _props2.getList, startY = _props2.startY, loadmoreSwitch = _props2.loadmoreSwitch, offset = _props2.offset, changeRefreshStatus = _props2.changeRefreshStatus, changeLoadMoreStatus = _props2.changeLoadMoreStatus, changeLoadMoreSwitch = _props2.changeLoadMoreSwitch, changeStartOffset = _props2.changeStartOffset;
+                touch = e.touches[0];
+                moveY = touch.pageY - startY; // move时的Y坐标
 
-      if (window.scrollY === 0 && moveY >= 0) {
-        e.preventDefault();
+                if (window.scrollY === 0 && moveY >= 0) {
+                  e.preventDefault();
 
-        listWrapper.style.top = moveY + 'px';
+                  listWrapper.style.top = moveY + 'px';
 
-        if (moveY >= 40) {
-          changeRefreshStatus(pageId, _config2.default.refresh.status.start);
-        } else {
-          changeRefreshStatus(pageId, _config2.default.refresh.status.prepare);
-        }
+                  if (moveY >= 40) {
+                    changeRefreshStatus(pageId, _config2.default.refresh.status.start);
+                  } else {
+                    changeRefreshStatus(pageId, _config2.default.refresh.status.prepare);
+                  }
+                }
+
+                if (!(window.scrollY + window.innerHeight === document.body.scrollHeight && loadmoreSwitch === true)) {
+                  _context3.next = 25;
+                  break;
+                }
+
+                changeStartOffset(pageId, offset + _config2.default.searchListCount);
+                changeLoadMoreStatus(pageId, _config2.default.loadmore.status.loading);
+                changeLoadMoreSwitch(pageId);
+                _context3.next = 10;
+                return (0, _util.getJson)(pageId, searchText, this.props.offset);
+
+              case 10:
+                json = _context3.sent;
+
+                if (!(offset + _config2.default.searchListCount >= json.total)) {
+                  _context3.next = 16;
+                  break;
+                }
+
+                changeLoadMoreStatus(pageId, _config2.default.loadmore.status.loadAll);
+                changeLoadMoreSwitch(pageId);
+                _context3.next = 25;
+                break;
+
+              case 16:
+                _context3.next = 18;
+                return (0, _util.getSearchResultArrName)(pageId);
+
+              case 18:
+                arrName = _context3.sent;
+                _context3.next = 21;
+                return list.concat(json[arrName]);
+
+              case 21:
+                arr = _context3.sent;
+
+                getList(pageId, arr);
+                changeLoadMoreStatus(pageId, _config2.default.loadmore.status.prepare);
+                changeLoadMoreSwitch(pageId);
+
+              case 25:
+              case 'end':
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function slideSlotTouchMove(_x4, _x5) {
+        return _ref3.apply(this, arguments);
       }
 
-      if (window.scrollY + window.innerHeight === document.body.scrollHeight && loadmoreSwitch === true) {
-        changeStartOffset(pageId, offset + _config2.default.searchListCount);
-        changeLoadMoreStatus(pageId, _config2.default.loadmore.status.loading);
-        changeLoadMoreSwitch(pageId);
-        var json = await (0, _util.getJson)(pageId, searchText, this.props.offset);
-        if (offset + _config2.default.searchListCount >= json.total) {
-          changeLoadMoreStatus(pageId, _config2.default.loadmore.status.loadAll);
-          changeLoadMoreSwitch(pageId);
-        } else {
-          var arrName = await (0, _util.getSearchResultArrName)(pageId);
-          var arr = await list.concat(json[arrName]);
-          getList(pageId, arr);
-          changeLoadMoreStatus(pageId, _config2.default.loadmore.status.prepare);
-          changeLoadMoreSwitch(pageId);
-        }
-      }
-    }
+      return slideSlotTouchMove;
+    }()
   }, {
     key: 'slideSlotTouchEnd',
-    value: async function slideSlotTouchEnd(e, listWrapper) {
-      var _props3 = this.props,
-          pageId = _props3.pageId,
-          searchText = _props3.searchText,
-          getList = _props3.getList,
-          refreshStatus = _props3.refreshStatus,
-          offset = _props3.offset,
-          changeRefreshStatus = _props3.changeRefreshStatus,
-          changeLoadMoreStatus = _props3.changeLoadMoreStatus,
-          changeLoadMoreSwitch = _props3.changeLoadMoreSwitch,
-          changeStartOffset = _props3.changeStartOffset,
-          getScrollY = _props3.getScrollY;
+    value: function () {
+      var _ref4 = _asyncToGenerator(regeneratorRuntime.mark(function _callee4(e, listWrapper) {
+        var _props3, pageId, searchText, getList, refreshStatus, offset, changeRefreshStatus, changeLoadMoreStatus, changeLoadMoreSwitch, changeStartOffset, getScrollY, json, arrName;
+
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _props3 = this.props, pageId = _props3.pageId, searchText = _props3.searchText, getList = _props3.getList, refreshStatus = _props3.refreshStatus, offset = _props3.offset, changeRefreshStatus = _props3.changeRefreshStatus, changeLoadMoreStatus = _props3.changeLoadMoreStatus, changeLoadMoreSwitch = _props3.changeLoadMoreSwitch, changeStartOffset = _props3.changeStartOffset, getScrollY = _props3.getScrollY;
 
 
-      getScrollY(pageId, window.scrollY);
+                getScrollY(pageId, window.scrollY);
 
-      if (refreshStatus === _config2.default.refresh.status.prepare) {
-        listWrapper.style.top = 0;
-      } else if (refreshStatus === _config2.default.refresh.status.start) {
-        changeRefreshStatus(pageId, _config2.default.refresh.status.refreshing);
-        changeStartOffset(pageId, 0);
-        listWrapper.style.top = 40 + 'px';
-        var json = await (0, _util.getJson)(pageId, searchText, 0);
-        if (offset + _config2.default.searchListCount < json) {
-          changeLoadMoreStatus(pageId, _config2.default.loadmore.status.prepare);
-          changeLoadMoreSwitch(pageId);
-        }
-        var arrName = (0, _util.getSearchResultArrName)(pageId);
-        getList(pageId, json[arrName]);
-        changeRefreshStatus(pageId, _config2.default.refresh.status.complete);
+                if (!(refreshStatus === _config2.default.refresh.status.prepare)) {
+                  _context4.next = 6;
+                  break;
+                }
 
-        await window.setTimeout(function () {
-          listWrapper.style.top = 0;
-          changeRefreshStatus(pageId, _config2.default.refresh.status.prepare);
-        }, 500);
+                listWrapper.style.top = 0;
+                _context4.next = 19;
+                break;
+
+              case 6:
+                if (!(refreshStatus === _config2.default.refresh.status.start)) {
+                  _context4.next = 19;
+                  break;
+                }
+
+                changeRefreshStatus(pageId, _config2.default.refresh.status.refreshing);
+                changeStartOffset(pageId, 0);
+                listWrapper.style.top = 40 + 'px';
+                _context4.next = 12;
+                return (0, _util.getJson)(pageId, searchText, 0);
+
+              case 12:
+                json = _context4.sent;
+
+                if (offset + _config2.default.searchListCount < json) {
+                  changeLoadMoreStatus(pageId, _config2.default.loadmore.status.prepare);
+                  changeLoadMoreSwitch(pageId);
+                }
+                arrName = (0, _util.getSearchResultArrName)(pageId);
+
+                getList(pageId, json[arrName]);
+                changeRefreshStatus(pageId, _config2.default.refresh.status.complete);
+
+                _context4.next = 19;
+                return window.setTimeout(function () {
+                  listWrapper.style.top = 0;
+                  changeRefreshStatus(pageId, _config2.default.refresh.status.prepare);
+                }, 500);
+
+              case 19:
+              case 'end':
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function slideSlotTouchEnd(_x6, _x7) {
+        return _ref4.apply(this, arguments);
       }
-    }
+
+      return slideSlotTouchEnd;
+    }()
   }, {
     key: 'listClick',
-    value: async function listClick(item) {
-      var _props4 = this.props,
-          pageId = _props4.pageId,
-          getDetail = _props4.getDetail;
+    value: function () {
+      var _ref5 = _asyncToGenerator(regeneratorRuntime.mark(function _callee5(item) {
+        var _props4, pageId, getDetail;
 
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _props4 = this.props, pageId = _props4.pageId, getDetail = _props4.getDetail;
+                _context5.next = 3;
+                return getDetail(pageId, item);
 
-      await getDetail(pageId, item);
-      _history2.default.push('/' + pageId + '/detail');
-      window.scrollTo(0, 0);
-    }
+              case 3:
+                _history2.default.push('/' + pageId + '/detail');
+                window.scrollTo(0, 0);
+
+              case 5:
+              case 'end':
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function listClick(_x8) {
+        return _ref5.apply(this, arguments);
+      }
+
+      return listClick;
+    }()
   }, {
     key: 'navBarClick',
-    value: async function navBarClick(pageId) {
-      var changePage = this.props.changePage;
+    value: function () {
+      var _ref6 = _asyncToGenerator(regeneratorRuntime.mark(function _callee6(pageId) {
+        var changePage, list, _props5, getList, searchText, json, arrName;
+
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                changePage = this.props.changePage;
+                _context6.next = 3;
+                return changePage(pageId);
+
+              case 3:
+
+                window.scrollTo(0, this.props.scrollY);
+
+                list = this.props.list;
+
+                if (!(list === undefined)) {
+                  _context6.next = 12;
+                  break;
+                }
+
+                _props5 = this.props, getList = _props5.getList, searchText = _props5.searchText;
+                _context6.next = 9;
+                return (0, _util.getJson)(pageId, searchText, 0);
+
+              case 9:
+                json = _context6.sent;
+                arrName = (0, _util.getSearchResultArrName)(pageId);
 
 
-      await changePage(pageId);
+                getList(pageId, json[arrName]);
 
-      window.scrollTo(0, this.props.scrollY);
+              case 12:
+              case 'end':
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this);
+      }));
 
-      var list = this.props.list;
-
-
-      if (list === undefined) {
-        var _props5 = this.props,
-            getList = _props5.getList,
-            searchText = _props5.searchText;
-
-        var json = await (0, _util.getJson)(pageId, searchText, 0);
-        var arrName = (0, _util.getSearchResultArrName)(pageId);
-
-        getList(pageId, json[arrName]);
+      function navBarClick(_x9) {
+        return _ref6.apply(this, arguments);
       }
-    }
+
+      return navBarClick;
+    }()
   }, {
     key: 'toHomeClick',
     value: function toHomeClick() {
