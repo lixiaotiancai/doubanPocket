@@ -38696,279 +38696,230 @@ module.exports = function(originalModule) {
 /*!******************************!*\
   !*** ./src/actions/index.js ***!
   \******************************/
-/*! exports provided: CHANGE_PAGE, GET_BOOK_LIST, GET_MOVIE_LIST, GET_MUSIC_LIST, CHANGE_SEARCH_TEXT, GET_BOOK_DETAIL, GET_MOVIE_DETAIL, GET_MUSIC_DETAIL, CHANGE_START_Y, CHANGE_MOVE_Y, CHANGE_BOOK_REFRESH_STATUS, CHANGE_MOVIE_REFRESH_STATUS, CHANGE_MUSIC_REFRESH_STATUS, CHANGE_BOOK_LOADMORE_STATUS, CHANGE_MOVIE_LOADMORE_STATUS, CHANGE_MUSIC_LOADMORE_STATUS, CHANGE_BOOK_LOADMORE_SWITCH, CHANGE_MOVIE_LOADMORE_SWITCH, CHANGE_MUSIC_LOADMORE_SWITCH, CHANGE_BOOK_OFFSET, CHANGE_MOVIE_OFFSET, CHANGE_MUSIC_OFFSET, GET_BOOK_SCROLL_Y, GET_MOVIE_SCROLL_Y, GET_MUSIC_SCROLL_Y, GET_LIKE_LIST, changePage, getBookList, getMovieList, getMusicList, changeSearchText, getBookDetail, getMovieDetail, getMusicDetail, changeStartY, changeMoveY, changeBookRefreshStatus, changeMovieRefreshStatus, changeMusicRefreshStatus, changeBookLoadMoreStatus, changeMovieLoadMoreStatus, changeMusicLoadMoreStatus, changeBookLoadMoreSwitch, changeMovieLoadMoreSwitch, changeMusicLoadMoreSwitch, changeBookOffset, changeMovieOffset, changeMusicOffset, getBookSrollY, getMovieSrollY, getMusicSrollY, getLikeList */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_PAGE", function() { return CHANGE_PAGE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BOOK_LIST", function() { return GET_BOOK_LIST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MOVIE_LIST", function() { return GET_MOVIE_LIST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MUSIC_LIST", function() { return GET_MUSIC_LIST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_SEARCH_TEXT", function() { return CHANGE_SEARCH_TEXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BOOK_DETAIL", function() { return GET_BOOK_DETAIL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MOVIE_DETAIL", function() { return GET_MOVIE_DETAIL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MUSIC_DETAIL", function() { return GET_MUSIC_DETAIL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_START_Y", function() { return CHANGE_START_Y; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MOVE_Y", function() { return CHANGE_MOVE_Y; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_BOOK_REFRESH_STATUS", function() { return CHANGE_BOOK_REFRESH_STATUS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MOVIE_REFRESH_STATUS", function() { return CHANGE_MOVIE_REFRESH_STATUS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MUSIC_REFRESH_STATUS", function() { return CHANGE_MUSIC_REFRESH_STATUS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_BOOK_LOADMORE_STATUS", function() { return CHANGE_BOOK_LOADMORE_STATUS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MOVIE_LOADMORE_STATUS", function() { return CHANGE_MOVIE_LOADMORE_STATUS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MUSIC_LOADMORE_STATUS", function() { return CHANGE_MUSIC_LOADMORE_STATUS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_BOOK_LOADMORE_SWITCH", function() { return CHANGE_BOOK_LOADMORE_SWITCH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MOVIE_LOADMORE_SWITCH", function() { return CHANGE_MOVIE_LOADMORE_SWITCH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MUSIC_LOADMORE_SWITCH", function() { return CHANGE_MUSIC_LOADMORE_SWITCH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_BOOK_OFFSET", function() { return CHANGE_BOOK_OFFSET; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MOVIE_OFFSET", function() { return CHANGE_MOVIE_OFFSET; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_MUSIC_OFFSET", function() { return CHANGE_MUSIC_OFFSET; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BOOK_SCROLL_Y", function() { return GET_BOOK_SCROLL_Y; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MOVIE_SCROLL_Y", function() { return GET_MOVIE_SCROLL_Y; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_MUSIC_SCROLL_Y", function() { return GET_MUSIC_SCROLL_Y; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_LIKE_LIST", function() { return GET_LIKE_LIST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changePage", function() { return changePage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBookList", function() { return getBookList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMovieList", function() { return getMovieList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMusicList", function() { return getMusicList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeSearchText", function() { return changeSearchText; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBookDetail", function() { return getBookDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMovieDetail", function() { return getMovieDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMusicDetail", function() { return getMusicDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeStartY", function() { return changeStartY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMoveY", function() { return changeMoveY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeBookRefreshStatus", function() { return changeBookRefreshStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMovieRefreshStatus", function() { return changeMovieRefreshStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMusicRefreshStatus", function() { return changeMusicRefreshStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeBookLoadMoreStatus", function() { return changeBookLoadMoreStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMovieLoadMoreStatus", function() { return changeMovieLoadMoreStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMusicLoadMoreStatus", function() { return changeMusicLoadMoreStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeBookLoadMoreSwitch", function() { return changeBookLoadMoreSwitch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMovieLoadMoreSwitch", function() { return changeMovieLoadMoreSwitch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMusicLoadMoreSwitch", function() { return changeMusicLoadMoreSwitch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeBookOffset", function() { return changeBookOffset; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMovieOffset", function() { return changeMovieOffset; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeMusicOffset", function() { return changeMusicOffset; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBookSrollY", function() { return getBookSrollY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMovieSrollY", function() { return getMovieSrollY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMusicSrollY", function() { return getMusicSrollY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLikeList", function() { return getLikeList; });
-const CHANGE_PAGE = 'CHANGE_PAGE'
 
-const GET_BOOK_LIST = 'GET_BOOK_LIST'
-const GET_MOVIE_LIST = 'GET_MOVIE_LIST'
-const GET_MUSIC_LIST = 'GET_MUSIC_LIST'
 
-const CHANGE_SEARCH_TEXT = 'CHANGE_SEARCH_TEXT'
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var CHANGE_PAGE = exports.CHANGE_PAGE = 'CHANGE_PAGE';
 
-const GET_BOOK_DETAIL = 'GET_BOOK_DETAIL'
-const GET_MOVIE_DETAIL = 'GET_MOVIE_DETAIL'
-const GET_MUSIC_DETAIL = 'GET_MUSIC_DETAIL'
+var GET_BOOK_LIST = exports.GET_BOOK_LIST = 'GET_BOOK_LIST';
+var GET_MOVIE_LIST = exports.GET_MOVIE_LIST = 'GET_MOVIE_LIST';
+var GET_MUSIC_LIST = exports.GET_MUSIC_LIST = 'GET_MUSIC_LIST';
 
-const CHANGE_START_Y = 'CHANGE_START_Y'
-const CHANGE_MOVE_Y = 'CHANGE_MOVE_Y'
+var CHANGE_SEARCH_TEXT = exports.CHANGE_SEARCH_TEXT = 'CHANGE_SEARCH_TEXT';
 
-const CHANGE_BOOK_REFRESH_STATUS = 'CHANGE_BOOK_REFRESH_STATUS'
-const CHANGE_MOVIE_REFRESH_STATUS = 'CHANGE_MOVIE_REFRESH_STATUS'
-const CHANGE_MUSIC_REFRESH_STATUS = 'CHANGE_MUSIC_REFRESH_STATUS'
+var GET_BOOK_DETAIL = exports.GET_BOOK_DETAIL = 'GET_BOOK_DETAIL';
+var GET_MOVIE_DETAIL = exports.GET_MOVIE_DETAIL = 'GET_MOVIE_DETAIL';
+var GET_MUSIC_DETAIL = exports.GET_MUSIC_DETAIL = 'GET_MUSIC_DETAIL';
 
-const CHANGE_BOOK_LOADMORE_STATUS = 'CHANGE_BOOK_LOADMORE_STATUS'
-const CHANGE_MOVIE_LOADMORE_STATUS = 'CHANGE_MOVIE_LOADMORE_STATUS'
-const CHANGE_MUSIC_LOADMORE_STATUS = 'CHANGE_MUSIC_LOADMORE_STATUS'
+var CHANGE_START_Y = exports.CHANGE_START_Y = 'CHANGE_START_Y';
+var CHANGE_MOVE_Y = exports.CHANGE_MOVE_Y = 'CHANGE_MOVE_Y';
 
-const CHANGE_BOOK_LOADMORE_SWITCH = 'CHANGE_BOOK_LOADMORE_SWITCH'
-const CHANGE_MOVIE_LOADMORE_SWITCH = 'CHANGE_MOVIE_LOADMORE_SWITCH'
-const CHANGE_MUSIC_LOADMORE_SWITCH = 'CHANGE_MUSIC_LOADMORE_SWITCH'
+var CHANGE_BOOK_REFRESH_STATUS = exports.CHANGE_BOOK_REFRESH_STATUS = 'CHANGE_BOOK_REFRESH_STATUS';
+var CHANGE_MOVIE_REFRESH_STATUS = exports.CHANGE_MOVIE_REFRESH_STATUS = 'CHANGE_MOVIE_REFRESH_STATUS';
+var CHANGE_MUSIC_REFRESH_STATUS = exports.CHANGE_MUSIC_REFRESH_STATUS = 'CHANGE_MUSIC_REFRESH_STATUS';
 
-const CHANGE_BOOK_OFFSET = 'CHANGE_BOOK_OFFSET'
-const CHANGE_MOVIE_OFFSET = 'CHANGE_MOVIE_OFFSET'
-const CHANGE_MUSIC_OFFSET = 'CHANGE_MUSIC_OFFSET'
+var CHANGE_BOOK_LOADMORE_STATUS = exports.CHANGE_BOOK_LOADMORE_STATUS = 'CHANGE_BOOK_LOADMORE_STATUS';
+var CHANGE_MOVIE_LOADMORE_STATUS = exports.CHANGE_MOVIE_LOADMORE_STATUS = 'CHANGE_MOVIE_LOADMORE_STATUS';
+var CHANGE_MUSIC_LOADMORE_STATUS = exports.CHANGE_MUSIC_LOADMORE_STATUS = 'CHANGE_MUSIC_LOADMORE_STATUS';
 
-const GET_BOOK_SCROLL_Y = 'GET_BOOK_SCROLL_Y'
-const GET_MOVIE_SCROLL_Y = 'GET_MOVIE_SCROLL_Y'
-const GET_MUSIC_SCROLL_Y = 'GET_MUSIC_SCROLL_Y'
+var CHANGE_BOOK_LOADMORE_SWITCH = exports.CHANGE_BOOK_LOADMORE_SWITCH = 'CHANGE_BOOK_LOADMORE_SWITCH';
+var CHANGE_MOVIE_LOADMORE_SWITCH = exports.CHANGE_MOVIE_LOADMORE_SWITCH = 'CHANGE_MOVIE_LOADMORE_SWITCH';
+var CHANGE_MUSIC_LOADMORE_SWITCH = exports.CHANGE_MUSIC_LOADMORE_SWITCH = 'CHANGE_MUSIC_LOADMORE_SWITCH';
 
-const GET_LIKE_LIST = 'GET_LIKE_LIST'
+var CHANGE_BOOK_OFFSET = exports.CHANGE_BOOK_OFFSET = 'CHANGE_BOOK_OFFSET';
+var CHANGE_MOVIE_OFFSET = exports.CHANGE_MOVIE_OFFSET = 'CHANGE_MOVIE_OFFSET';
+var CHANGE_MUSIC_OFFSET = exports.CHANGE_MUSIC_OFFSET = 'CHANGE_MUSIC_OFFSET';
 
-const changePage = (pageId) => {
+var GET_BOOK_SCROLL_Y = exports.GET_BOOK_SCROLL_Y = 'GET_BOOK_SCROLL_Y';
+var GET_MOVIE_SCROLL_Y = exports.GET_MOVIE_SCROLL_Y = 'GET_MOVIE_SCROLL_Y';
+var GET_MUSIC_SCROLL_Y = exports.GET_MUSIC_SCROLL_Y = 'GET_MUSIC_SCROLL_Y';
+
+var GET_LIKE_LIST = exports.GET_LIKE_LIST = 'GET_LIKE_LIST';
+
+var changePage = exports.changePage = function changePage(pageId) {
   return {
     type: CHANGE_PAGE,
-    pageId
-  }
-}
+    pageId: pageId
+  };
+};
 
-const getBookList = (bookList) => {
+var getBookList = exports.getBookList = function getBookList(bookList) {
   return {
     type: GET_BOOK_LIST,
-    bookList
-  }
-}
+    bookList: bookList
+  };
+};
 
-const getMovieList = (movieList) => {
+var getMovieList = exports.getMovieList = function getMovieList(movieList) {
   return {
     type: GET_MOVIE_LIST,
-    movieList
-  }
-}
+    movieList: movieList
+  };
+};
 
-const getMusicList = (musicList) => {
+var getMusicList = exports.getMusicList = function getMusicList(musicList) {
   return {
     type: GET_MUSIC_LIST,
-    musicList
-  }
-}
+    musicList: musicList
+  };
+};
 
-const changeSearchText = (searchText) => {
+var changeSearchText = exports.changeSearchText = function changeSearchText(searchText) {
   return {
     type: CHANGE_SEARCH_TEXT,
-    searchText
-  }
-}
+    searchText: searchText
+  };
+};
 
-const getBookDetail = (bookDetail) => {
+var getBookDetail = exports.getBookDetail = function getBookDetail(bookDetail) {
   return {
     type: GET_BOOK_DETAIL,
-    bookDetail
-  }
-}
+    bookDetail: bookDetail
+  };
+};
 
-const getMovieDetail = (movieDetail) => {
+var getMovieDetail = exports.getMovieDetail = function getMovieDetail(movieDetail) {
   return {
     type: GET_MOVIE_DETAIL,
-    movieDetail
-  }
-}
+    movieDetail: movieDetail
+  };
+};
 
-const getMusicDetail = (musicDetail) => {
+var getMusicDetail = exports.getMusicDetail = function getMusicDetail(musicDetail) {
   return {
     type: GET_MUSIC_DETAIL,
-    musicDetail
-  }
-}
+    musicDetail: musicDetail
+  };
+};
 
-const changeStartY = (startY) => {
+var changeStartY = exports.changeStartY = function changeStartY(startY) {
   return {
     type: CHANGE_START_Y,
-    startY
-  }
-}
+    startY: startY
+  };
+};
 
-const changeMoveY = (moveY) => {
+var changeMoveY = exports.changeMoveY = function changeMoveY(moveY) {
   return {
     type: CHANGE_MOVE_Y,
-    moveY
-  }
-}
+    moveY: moveY
+  };
+};
 
-const changeBookRefreshStatus = (bookRefreshStatus) => {
+var changeBookRefreshStatus = exports.changeBookRefreshStatus = function changeBookRefreshStatus(bookRefreshStatus) {
   return {
     type: CHANGE_BOOK_REFRESH_STATUS,
-    bookRefreshStatus
-  }
-}
+    bookRefreshStatus: bookRefreshStatus
+  };
+};
 
-const changeMovieRefreshStatus = (movieRefreshStatus) => {
+var changeMovieRefreshStatus = exports.changeMovieRefreshStatus = function changeMovieRefreshStatus(movieRefreshStatus) {
   return {
     type: CHANGE_MOVIE_REFRESH_STATUS,
-    movieRefreshStatus
-  }
-}
+    movieRefreshStatus: movieRefreshStatus
+  };
+};
 
-const changeMusicRefreshStatus = (musicRefreshStatus) => {
+var changeMusicRefreshStatus = exports.changeMusicRefreshStatus = function changeMusicRefreshStatus(musicRefreshStatus) {
   return {
     type: CHANGE_MUSIC_REFRESH_STATUS,
-    musicRefreshStatus
-  }
-}
+    musicRefreshStatus: musicRefreshStatus
+  };
+};
 
-const changeBookLoadMoreStatus = (bookLoadMoreStatus) => {
+var changeBookLoadMoreStatus = exports.changeBookLoadMoreStatus = function changeBookLoadMoreStatus(bookLoadMoreStatus) {
   return {
     type: CHANGE_BOOK_LOADMORE_STATUS,
-    bookLoadMoreStatus
-  }
-}
+    bookLoadMoreStatus: bookLoadMoreStatus
+  };
+};
 
-const changeMovieLoadMoreStatus = (movieLoadMoreStatus) => {
+var changeMovieLoadMoreStatus = exports.changeMovieLoadMoreStatus = function changeMovieLoadMoreStatus(movieLoadMoreStatus) {
   return {
     type: CHANGE_MOVIE_LOADMORE_STATUS,
-    movieLoadMoreStatus
-  }
-}
+    movieLoadMoreStatus: movieLoadMoreStatus
+  };
+};
 
-const changeMusicLoadMoreStatus = (musicLoadMoreStatus) => {
+var changeMusicLoadMoreStatus = exports.changeMusicLoadMoreStatus = function changeMusicLoadMoreStatus(musicLoadMoreStatus) {
   return {
     type: CHANGE_MUSIC_LOADMORE_STATUS,
-    musicLoadMoreStatus
-  }
-}
+    musicLoadMoreStatus: musicLoadMoreStatus
+  };
+};
 
-const changeBookLoadMoreSwitch = () => {
+var changeBookLoadMoreSwitch = exports.changeBookLoadMoreSwitch = function changeBookLoadMoreSwitch() {
   return {
     type: CHANGE_BOOK_LOADMORE_SWITCH
-  }
-}
+  };
+};
 
-const changeMovieLoadMoreSwitch = () => {
+var changeMovieLoadMoreSwitch = exports.changeMovieLoadMoreSwitch = function changeMovieLoadMoreSwitch() {
   return {
     type: CHANGE_MOVIE_LOADMORE_SWITCH
-  }
-}
+  };
+};
 
-const changeMusicLoadMoreSwitch = () => {
+var changeMusicLoadMoreSwitch = exports.changeMusicLoadMoreSwitch = function changeMusicLoadMoreSwitch() {
   return {
     type: CHANGE_MUSIC_LOADMORE_SWITCH
-  }
-}
+  };
+};
 
-const changeBookOffset = (bookOffset) => {
+var changeBookOffset = exports.changeBookOffset = function changeBookOffset(bookOffset) {
   return {
     type: CHANGE_BOOK_OFFSET,
-    bookOffset
-  }
-}
+    bookOffset: bookOffset
+  };
+};
 
-const changeMovieOffset = (movieOffset) => {
+var changeMovieOffset = exports.changeMovieOffset = function changeMovieOffset(movieOffset) {
   return {
     type: CHANGE_MOVIE_OFFSET,
-    movieOffset
-  }
-}
+    movieOffset: movieOffset
+  };
+};
 
-const changeMusicOffset = (musicOffset) => {
+var changeMusicOffset = exports.changeMusicOffset = function changeMusicOffset(musicOffset) {
   return {
     type: CHANGE_MUSIC_OFFSET,
-    musicOffset
-  }
-}
+    musicOffset: musicOffset
+  };
+};
 
-const getBookSrollY = (bookScrollY) => {
+var getBookSrollY = exports.getBookSrollY = function getBookSrollY(bookScrollY) {
   return {
     type: GET_BOOK_SCROLL_Y,
-    bookScrollY
-  }
-}
+    bookScrollY: bookScrollY
+  };
+};
 
-const getMovieSrollY = (movieScrollY) => {
+var getMovieSrollY = exports.getMovieSrollY = function getMovieSrollY(movieScrollY) {
   return {
     type: GET_MOVIE_SCROLL_Y,
-    movieScrollY
-  }
-}
+    movieScrollY: movieScrollY
+  };
+};
 
-const getMusicSrollY = (musicScrollY) => {
+var getMusicSrollY = exports.getMusicSrollY = function getMusicSrollY(musicScrollY) {
   return {
     type: GET_MUSIC_SCROLL_Y,
-    musicScrollY
-  }
-}
+    musicScrollY: musicScrollY
+  };
+};
 
-const getLikeList = (likeList) => {
+var getLikeList = exports.getLikeList = function getLikeList(likeList) {
   return {
     type: GET_LIKE_LIST,
-    likeList
-  }
-}
-
+    likeList: likeList
+  };
+};
 
 /***/ }),
 
@@ -38987,25 +38938,28 @@ const getLikeList = (likeList) => {
 /*!****************************!*\
   !*** ./src/assets/util.js ***!
   \****************************/
-/*! exports provided: getPageConfig, getAllPageId, getCurrentPageId, getPlaceholder, getPageName, getSearchResultArrName, getHeaderText, getReturnButtonText, getJson */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPageConfig", function() { return getPageConfig; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllPageId", function() { return getAllPageId; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCurrentPageId", function() { return getCurrentPageId; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPlaceholder", function() { return getPlaceholder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPageName", function() { return getPageName; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSearchResultArrName", function() { return getSearchResultArrName; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHeaderText", function() { return getHeaderText; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getReturnButtonText", function() { return getReturnButtonText; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getJson", function() { return getJson; });
-/* harmony import */ var fetch_jsonp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fetch-jsonp */ "./node_modules/fetch-jsonp/build/fetch-jsonp.js");
-/* harmony import */ var fetch_jsonp__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(fetch_jsonp__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./src/config.js");
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getJson = exports.getReturnButtonText = exports.getHeaderText = exports.getSearchResultArrName = exports.getPageName = exports.getPlaceholder = exports.getCurrentPageId = exports.getAllPageId = exports.getPageConfig = undefined;
+
+var _fetchJsonp = __webpack_require__(/*! fetch-jsonp */ "./node_modules/fetch-jsonp/build/fetch-jsonp.js");
+
+var _fetchJsonp2 = _interopRequireDefault(_fetchJsonp);
+
+var _config = __webpack_require__(/*! ../config */ "./src/config.js");
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 /**
  * 获取URL
@@ -39016,12 +38970,14 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return   {string}              URL
  */
-const getURL = (type, text, start = 0) => {
-  const pageConfig = getPageConfig(type)
-  const searchURL = pageConfig.searchPage.searchURL
+var getURL = function getURL(type, text) {
+  var start = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
-  return searchURL + `?q=${text}&start=${start}&count=${_config__WEBPACK_IMPORTED_MODULE_1__["default"].searchListCount}`
-}
+  var pageConfig = getPageConfig(type);
+  var searchURL = pageConfig.searchPage.searchURL;
+
+  return searchURL + ('?q=' + text + '&start=' + start + '&count=' + _config2.default.searchListCount);
+};
 
 /**
  * 接口专区
@@ -39035,43 +38991,45 @@ const getURL = (type, text, start = 0) => {
  * @param    {string}    pageName       页面内容（图书？电影？音乐？or more...）
  * @return   {object}                   页面信息
  */
-const getPageConfig = (pageId) => {
-  const pageList = _config__WEBPACK_IMPORTED_MODULE_1__["default"].page
+var getPageConfig = exports.getPageConfig = function getPageConfig(pageId) {
+  var pageList = _config2.default.page;
 
-  for (let i = 0; i < pageList.length; i++) {
+  for (var i = 0; i < pageList.length; i++) {
     if (pageId === pageList[i].pageId) {
-      return pageList[i]
+      return pageList[i];
     }
   }
 
-  console.log(new Error('No Page Found!!!'))
+  console.log(new Error('No Page Found!!!'));
 
-  return pageList[0]
-}
+  return pageList[0];
+};
 
 /**
  * 获取所有页面名称
  *
  * @return   {array}                    所有页面名称
  */
-const getAllPageId = () => {
-  const pageArr = []
+var getAllPageId = exports.getAllPageId = function getAllPageId() {
+  var pageArr = [];
 
-  for (var i = 0; i < _config__WEBPACK_IMPORTED_MODULE_1__["default"].page.length; i++) {
-    pageArr.push(_config__WEBPACK_IMPORTED_MODULE_1__["default"].page[i].pageId)
+  for (var i = 0; i < _config2.default.page.length; i++) {
+    pageArr.push(_config2.default.page[i].pageId);
   }
 
-  return pageArr
-}
+  return pageArr;
+};
 
 /**
  * 获取当前活动页面名称
  *
  * @return   {string}                    活动页面
  */
-const getCurrentPageId = (pageId = _config__WEBPACK_IMPORTED_MODULE_1__["default"].currentPageId) => {
-  return getPageConfig(pageId).pageId
-}
+var getCurrentPageId = exports.getCurrentPageId = function getCurrentPageId() {
+  var pageId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _config2.default.currentPageId;
+
+  return getPageConfig(pageId).pageId;
+};
 
 /**
  * 获取搜索栏的placeholder
@@ -39079,25 +39037,25 @@ const getCurrentPageId = (pageId = _config__WEBPACK_IMPORTED_MODULE_1__["default
  * @param    {string}  searchType        搜索类型（图书？电影？音乐？or more...）
  * @return   {string}                    placeholder
  */
-const getPlaceholder = (pageId) => {
-  return getPageConfig(pageId).searchPage.searchPlaceholder
-}
+var getPlaceholder = exports.getPlaceholder = function getPlaceholder(pageId) {
+  return getPageConfig(pageId).searchPage.searchPlaceholder;
+};
 
-const getPageName = (pageId) => {
-  return getPageConfig(pageId).pageName
-}
+var getPageName = exports.getPageName = function getPageName(pageId) {
+  return getPageConfig(pageId).pageName;
+};
 
-const getSearchResultArrName = (pageId) => {
-  return getPageConfig(pageId).searchPage.searchResultArrName
-}
+var getSearchResultArrName = exports.getSearchResultArrName = function getSearchResultArrName(pageId) {
+  return getPageConfig(pageId).searchPage.searchResultArrName;
+};
 
-const getHeaderText = (pageId) => {
-  return getPageConfig(pageId).detailPage.headerText
-}
+var getHeaderText = exports.getHeaderText = function getHeaderText(pageId) {
+  return getPageConfig(pageId).detailPage.headerText;
+};
 
-const getReturnButtonText = (pageId) => {
-  return getPageConfig(pageId).detailPage.returnBtnTxt
-}
+var getReturnButtonText = exports.getReturnButtonText = function getReturnButtonText(pageId) {
+  return getPageConfig(pageId).detailPage.returnBtnTxt;
+};
 
 /**
  * 获取json
@@ -39108,18 +39066,46 @@ const getReturnButtonText = (pageId) => {
  * @param    {func}    callback    回调函数
  * @return   json
  */
-const getJson = async (type, text, start) => {
-  const URL = getURL(type, text, start) // 取到请求的url
+var getJson = exports.getJson = function () {
+  var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(type, text, start) {
+    var URL, response, json;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            URL = getURL(type, text, start); // 取到请求的url
 
-  try {
-    const response = await fetch_jsonp__WEBPACK_IMPORTED_MODULE_0___default()(URL)
-    const json = await response.json()
-    return json
-  } catch (err) {
-    console.log(err)
-  }
-}
+            _context.prev = 1;
+            _context.next = 4;
+            return (0, _fetchJsonp2.default)(URL);
 
+          case 4:
+            response = _context.sent;
+            _context.next = 7;
+            return response.json();
+
+          case 7:
+            json = _context.sent;
+            return _context.abrupt('return', json);
+
+          case 11:
+            _context.prev = 11;
+            _context.t0 = _context['catch'](1);
+
+            console.log(_context.t0);
+
+          case 14:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, undefined, [[1, 11]]);
+  }));
+
+  return function getJson(_x3, _x4, _x5) {
+    return _ref.apply(this, arguments);
+  };
+}();
 
 /***/ }),
 
@@ -41382,11 +41368,15 @@ exports.default = ToTop;
 /*!***********************!*\
   !*** ./src/config.js ***!
   \***********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 /*********************************************************************************
  *                                                                                *
  *                                                                                *
@@ -41395,7 +41385,7 @@ __webpack_require__.r(__webpack_exports__);
  *                                                                                *
  ********************************************************************************/
 
-const config = {
+var config = {
   currentPageId: 'book', // 初始显示的页面
 
   searchListCount: 10, // 搜索 和 刷新每次显示的条目数
@@ -41497,10 +41487,9 @@ const config = {
       headerText: '音乐详情'
     }
   }]
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (config);
-
+exports.default = config;
 
 /***/ }),
 
@@ -42471,44 +42460,55 @@ _reactDom2.default.render(_react2.default.createElement(
 /*!**********************************************!*\
   !*** ./src/reducers/changeLoadMoreStatus.js ***!
   \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config */ "./src/config.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-let initialState = {
-  book: _config__WEBPACK_IMPORTED_MODULE_0__["default"].loadmore.status.prepare,
-  movie: _config__WEBPACK_IMPORTED_MODULE_0__["default"].loadmore.status.prepare,
-  music: _config__WEBPACK_IMPORTED_MODULE_0__["default"].loadmore.status.prepare
-}
+var _config = __webpack_require__(/*! ../config */ "./src/config.js");
 
-const changeLoadMoreStatus = (state = initialState, action) => {
+var _config2 = _interopRequireDefault(_config);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+  book: _config2.default.loadmore.status.prepare,
+  movie: _config2.default.loadmore.status.prepare,
+  music: _config2.default.loadmore.status.prepare
+};
+
+var changeLoadMoreStatus = function changeLoadMoreStatus() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_BOOK_LOADMORE_STATUS"]:
-      return { ...state,
+    case _actions.CHANGE_BOOK_LOADMORE_STATUS:
+      return _extends({}, state, {
         book: action.bookLoadMoreStatus
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_MOVIE_LOADMORE_STATUS"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MOVIE_LOADMORE_STATUS:
+      return _extends({}, state, {
         movie: action.movieLoadMoreStatus
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_MUSIC_LOADMORE_STATUS"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MUSIC_LOADMORE_STATUS:
+      return _extends({}, state, {
         music: action.musicLoadMoreStatus
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (changeLoadMoreStatus);
-
+exports.default = changeLoadMoreStatus;
 
 /***/ }),
 
@@ -42516,41 +42516,49 @@ const changeLoadMoreStatus = (state = initialState, action) => {
 /*!**********************************************!*\
   !*** ./src/reducers/changeLoadMoreSwitch.js ***!
   \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
-let initialState = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
   book: true,
   movie: true,
   music: true
-}
+};
 
-const changeLoadMoreSwitch = (state = initialState, action) => {
+var changeLoadMoreSwitch = function changeLoadMoreSwitch() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_BOOK_LOADMORE_SWITCH"]:
-      return { ...state,
+    case _actions.CHANGE_BOOK_LOADMORE_SWITCH:
+      return _extends({}, state, {
         book: !state.book
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_MOVIE_LOADMORE_SWITCH"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MOVIE_LOADMORE_SWITCH:
+      return _extends({}, state, {
         movie: !state.movie
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_MUSIC_LOADMORE_SWITCH"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MUSIC_LOADMORE_SWITCH:
+      return _extends({}, state, {
         music: !state.music
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (changeLoadMoreSwitch);
-
+exports.default = changeLoadMoreSwitch;
 
 /***/ }),
 
@@ -42558,36 +42566,43 @@ const changeLoadMoreSwitch = (state = initialState, action) => {
 /*!************************************!*\
   !*** ./src/reducers/changePage.js ***!
   \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _assets_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/util */ "./src/assets/util.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-let initialState = {
-  pageId: Object(_assets_util__WEBPACK_IMPORTED_MODULE_0__["getCurrentPageId"])(),
-  placeholder: Object(_assets_util__WEBPACK_IMPORTED_MODULE_0__["getPlaceholder"])(Object(_assets_util__WEBPACK_IMPORTED_MODULE_0__["getCurrentPageId"])())
-}
+var _util = __webpack_require__(/*! ../assets/util */ "./src/assets/util.js");
 
-const changePage = (state = initialState, action) => {
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
+  pageId: (0, _util.getCurrentPageId)(),
+  placeholder: (0, _util.getPlaceholder)((0, _util.getCurrentPageId)())
+};
+
+var changePage = function changePage() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_PAGE"]:
-      return { ...state,
+    case _actions.CHANGE_PAGE:
+      return _extends({}, state, {
         pageId: action.pageId,
-        placeholder: Object(_assets_util__WEBPACK_IMPORTED_MODULE_0__["getPlaceholder"])(action.pageId)
-      }
+        placeholder: (0, _util.getPlaceholder)(action.pageId)
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (changePage);
-
+exports.default = changePage;
 
 /***/ }),
 
@@ -42595,44 +42610,55 @@ const changePage = (state = initialState, action) => {
 /*!*********************************************!*\
   !*** ./src/reducers/changeRefreshStatus.js ***!
   \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config */ "./src/config.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-let initialState = {
-  book: _config__WEBPACK_IMPORTED_MODULE_0__["default"].refresh.status.prepare,
-  movie: _config__WEBPACK_IMPORTED_MODULE_0__["default"].refresh.status.prepare,
-  music: _config__WEBPACK_IMPORTED_MODULE_0__["default"].refresh.status.prepare
-}
+var _config = __webpack_require__(/*! ../config */ "./src/config.js");
 
-const changeRefreshStatus = (state = initialState, action) => {
+var _config2 = _interopRequireDefault(_config);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+  book: _config2.default.refresh.status.prepare,
+  movie: _config2.default.refresh.status.prepare,
+  music: _config2.default.refresh.status.prepare
+};
+
+var changeRefreshStatus = function changeRefreshStatus() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_BOOK_REFRESH_STATUS"]:
-      return { ...state,
+    case _actions.CHANGE_BOOK_REFRESH_STATUS:
+      return _extends({}, state, {
         book: action.bookRefreshStatus
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_MOVIE_REFRESH_STATUS"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MOVIE_REFRESH_STATUS:
+      return _extends({}, state, {
         movie: action.movieRefreshStatus
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_MUSIC_REFRESH_STATUS"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MUSIC_REFRESH_STATUS:
+      return _extends({}, state, {
         music: action.musicRefreshStatus
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (changeRefreshStatus);
-
+exports.default = changeRefreshStatus;
 
 /***/ }),
 
@@ -42640,36 +42666,44 @@ const changeRefreshStatus = (state = initialState, action) => {
 /*!***************************************!*\
   !*** ./src/reducers/changeScrollY.js ***!
   \***************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
-let initialState = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
   startY: 0,
   moveY: 0
-}
+};
 
-const changeScrollY = (state = initialState, action) => {
+var changeScrollY = function changeScrollY() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_START_Y"]:
-      return { ...state,
+    case _actions.CHANGE_START_Y:
+      return _extends({}, state, {
         startY: action.startY
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_MOVE_Y"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MOVE_Y:
+      return _extends({}, state, {
         moveY: action.moveY
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (changeScrollY);
-
+exports.default = changeScrollY;
 
 /***/ }),
 
@@ -42677,31 +42711,39 @@ const changeScrollY = (state = initialState, action) => {
 /*!******************************************!*\
   !*** ./src/reducers/changeSearchText.js ***!
   \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
-let initialState = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
   searchText: ''
-}
+};
 
-const changeSearchText = (state = initialState, action) => {
+var changeSearchText = function changeSearchText() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_SEARCH_TEXT"]:
-      return { ...state,
+    case _actions.CHANGE_SEARCH_TEXT:
+      return _extends({}, state, {
         searchText: action.searchText
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (changeSearchText);
-
+exports.default = changeSearchText;
 
 /***/ }),
 
@@ -42709,41 +42751,49 @@ const changeSearchText = (state = initialState, action) => {
 /*!*******************************************!*\
   !*** ./src/reducers/changeStartOffset.js ***!
   \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
-let initialState = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
   book: 0,
   movie: 0,
   music: 0
-}
+};
 
-const changeStartOffset = (state = initialState, action) => {
+var changeStartOffset = function changeStartOffset() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_BOOK_OFFSET"]:
-      return { ...state,
+    case _actions.CHANGE_BOOK_OFFSET:
+      return _extends({}, state, {
         book: action.bookOffset
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_MOVIE_OFFSET"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MOVIE_OFFSET:
+      return _extends({}, state, {
         movie: action.movieOffset
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["CHANGE_MUSIC_OFFSET"]:
-      return { ...state,
+      });
+    case _actions.CHANGE_MUSIC_OFFSET:
+      return _extends({}, state, {
         music: action.musicOffset
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (changeStartOffset);
-
+exports.default = changeStartOffset;
 
 /***/ }),
 
@@ -42751,41 +42801,49 @@ const changeStartOffset = (state = initialState, action) => {
 /*!***********************************!*\
   !*** ./src/reducers/getDetail.js ***!
   \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
-let initialState = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
   book: {},
   movie: {},
   music: {}
-}
+};
 
-const getDetail = (state = initialState, action) => {
+var getDetail = function getDetail() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_BOOK_DETAIL"]:
-      return { ...state,
+    case _actions.GET_BOOK_DETAIL:
+      return _extends({}, state, {
         book: action.bookDetail
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_MOVIE_DETAIL"]:
-      return { ...state,
+      });
+    case _actions.GET_MOVIE_DETAIL:
+      return _extends({}, state, {
         movie: action.movieDetail
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_MUSIC_DETAIL"]:
-      return { ...state,
+      });
+    case _actions.GET_MUSIC_DETAIL:
+      return _extends({}, state, {
         music: action.musicDetail
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (getDetail);
-
+exports.default = getDetail;
 
 /***/ }),
 
@@ -42793,30 +42851,38 @@ const getDetail = (state = initialState, action) => {
 /*!*************************************!*\
   !*** ./src/reducers/getLikeList.js ***!
   \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
-let initialState = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
   likeList: []
-}
-const getLikeList = (state = initialState, action) => {
+};
+var getLikeList = function getLikeList() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_LIKE_LIST"]:
-      return { ...state,
+    case _actions.GET_LIKE_LIST:
+      return _extends({}, state, {
         likeList: action.likeList
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (getLikeList);
-
+exports.default = getLikeList;
 
 /***/ }),
 
@@ -42824,41 +42890,49 @@ const getLikeList = (state = initialState, action) => {
 /*!*********************************!*\
   !*** ./src/reducers/getList.js ***!
   \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
-let initialState = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
   book: undefined, // 这里设成 undefined 而不是 [], 是为了区分 加载状态 和 无查询结果状态
   movie: undefined,
   music: undefined
-}
+};
 
-const getList = (state = initialState, action) => {
+var getList = function getList() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_BOOK_LIST"]:
-      return { ...state,
+    case _actions.GET_BOOK_LIST:
+      return _extends({}, state, {
         book: action.bookList
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_MOVIE_LIST"]:
-      return { ...state,
+      });
+    case _actions.GET_MOVIE_LIST:
+      return _extends({}, state, {
         movie: action.movieList
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_MUSIC_LIST"]:
-      return { ...state,
+      });
+    case _actions.GET_MUSIC_LIST:
+      return _extends({}, state, {
         music: action.musicList
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (getList);
-
+exports.default = getList;
 
 /***/ }),
 
@@ -42866,41 +42940,49 @@ const getList = (state = initialState, action) => {
 /*!************************************!*\
   !*** ./src/reducers/getScrollY.js ***!
   \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 
-let initialState = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+var initialState = {
   book: 0,
   movie: 0,
   music: 0
-}
+};
 
-const getScrollY = (state = initialState, action) => {
+var getScrollY = function getScrollY() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_BOOK_SCROLL_Y"]:
-      return { ...state,
+    case _actions.GET_BOOK_SCROLL_Y:
+      return _extends({}, state, {
         book: action.bookScrollY
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_MOVIE_SCROLL_Y"]:
-      return { ...state,
+      });
+    case _actions.GET_MOVIE_SCROLL_Y:
+      return _extends({}, state, {
         movie: action.movieScrollY
-      }
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["GET_MUSIC_SCROLL_Y"]:
-      return { ...state,
+      });
+    case _actions.GET_MUSIC_SCROLL_Y:
+      return _extends({}, state, {
         music: action.musicScrollY
-      }
+      });
     default:
-      return state
+      return state;
   }
-}
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (getScrollY);
-
+exports.default = getScrollY;
 
 /***/ }),
 
@@ -42908,53 +42990,79 @@ const getScrollY = (state = initialState, action) => {
 /*!*******************************!*\
   !*** ./src/reducers/index.js ***!
   \*******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _changePage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./changePage */ "./src/reducers/changePage.js");
-/* harmony import */ var _changeSearchText__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./changeSearchText */ "./src/reducers/changeSearchText.js");
-/* harmony import */ var _getList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getList */ "./src/reducers/getList.js");
-/* harmony import */ var _getDetail__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./getDetail */ "./src/reducers/getDetail.js");
-/* harmony import */ var _changeScrollY__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./changeScrollY */ "./src/reducers/changeScrollY.js");
-/* harmony import */ var _changeRefreshStatus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./changeRefreshStatus */ "./src/reducers/changeRefreshStatus.js");
-/* harmony import */ var _changeLoadMoreStatus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./changeLoadMoreStatus */ "./src/reducers/changeLoadMoreStatus.js");
-/* harmony import */ var _changeLoadMoreSwitch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./changeLoadMoreSwitch */ "./src/reducers/changeLoadMoreSwitch.js");
-/* harmony import */ var _changeStartOffset__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./changeStartOffset */ "./src/reducers/changeStartOffset.js");
-/* harmony import */ var _getScrollY__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./getScrollY */ "./src/reducers/getScrollY.js");
-/* harmony import */ var _getLikeList__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./getLikeList */ "./src/reducers/getLikeList.js");
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
+var _changePage = __webpack_require__(/*! ./changePage */ "./src/reducers/changePage.js");
 
+var _changePage2 = _interopRequireDefault(_changePage);
 
+var _changeSearchText = __webpack_require__(/*! ./changeSearchText */ "./src/reducers/changeSearchText.js");
 
+var _changeSearchText2 = _interopRequireDefault(_changeSearchText);
 
+var _getList = __webpack_require__(/*! ./getList */ "./src/reducers/getList.js");
 
+var _getList2 = _interopRequireDefault(_getList);
 
+var _getDetail = __webpack_require__(/*! ./getDetail */ "./src/reducers/getDetail.js");
 
+var _getDetail2 = _interopRequireDefault(_getDetail);
 
+var _changeScrollY = __webpack_require__(/*! ./changeScrollY */ "./src/reducers/changeScrollY.js");
 
+var _changeScrollY2 = _interopRequireDefault(_changeScrollY);
 
-const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  changePage: _changePage__WEBPACK_IMPORTED_MODULE_1__["default"],
-  changeSearchText: _changeSearchText__WEBPACK_IMPORTED_MODULE_2__["default"],
-  getList: _getList__WEBPACK_IMPORTED_MODULE_3__["default"],
-  getDetail: _getDetail__WEBPACK_IMPORTED_MODULE_4__["default"],
-  changeScrollY: _changeScrollY__WEBPACK_IMPORTED_MODULE_5__["default"],
-  changeRefreshStatus: _changeRefreshStatus__WEBPACK_IMPORTED_MODULE_6__["default"],
-  changeLoadMoreStatus: _changeLoadMoreStatus__WEBPACK_IMPORTED_MODULE_7__["default"],
-  changeLoadMoreSwitch: _changeLoadMoreSwitch__WEBPACK_IMPORTED_MODULE_8__["default"],
-  changeStartOffset: _changeStartOffset__WEBPACK_IMPORTED_MODULE_9__["default"],
-  getScrollY: _getScrollY__WEBPACK_IMPORTED_MODULE_10__["default"],
-  getLikeList: _getLikeList__WEBPACK_IMPORTED_MODULE_11__["default"]
-})
+var _changeRefreshStatus = __webpack_require__(/*! ./changeRefreshStatus */ "./src/reducers/changeRefreshStatus.js");
 
-/* harmony default export */ __webpack_exports__["default"] = (rootReducer);
+var _changeRefreshStatus2 = _interopRequireDefault(_changeRefreshStatus);
 
+var _changeLoadMoreStatus = __webpack_require__(/*! ./changeLoadMoreStatus */ "./src/reducers/changeLoadMoreStatus.js");
+
+var _changeLoadMoreStatus2 = _interopRequireDefault(_changeLoadMoreStatus);
+
+var _changeLoadMoreSwitch = __webpack_require__(/*! ./changeLoadMoreSwitch */ "./src/reducers/changeLoadMoreSwitch.js");
+
+var _changeLoadMoreSwitch2 = _interopRequireDefault(_changeLoadMoreSwitch);
+
+var _changeStartOffset = __webpack_require__(/*! ./changeStartOffset */ "./src/reducers/changeStartOffset.js");
+
+var _changeStartOffset2 = _interopRequireDefault(_changeStartOffset);
+
+var _getScrollY = __webpack_require__(/*! ./getScrollY */ "./src/reducers/getScrollY.js");
+
+var _getScrollY2 = _interopRequireDefault(_getScrollY);
+
+var _getLikeList = __webpack_require__(/*! ./getLikeList */ "./src/reducers/getLikeList.js");
+
+var _getLikeList2 = _interopRequireDefault(_getLikeList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var rootReducer = (0, _redux.combineReducers)({
+  changePage: _changePage2.default,
+  changeSearchText: _changeSearchText2.default,
+  getList: _getList2.default,
+  getDetail: _getDetail2.default,
+  changeScrollY: _changeScrollY2.default,
+  changeRefreshStatus: _changeRefreshStatus2.default,
+  changeLoadMoreStatus: _changeLoadMoreStatus2.default,
+  changeLoadMoreSwitch: _changeLoadMoreSwitch2.default,
+  changeStartOffset: _changeStartOffset2.default,
+  getScrollY: _getScrollY2.default,
+  getLikeList: _getLikeList2.default
+});
+
+exports.default = rootReducer;
 
 /***/ }),
 
@@ -42962,17 +43070,23 @@ const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 /*!*******************************!*\
   !*** ./src/router/history.js ***!
   \*******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var history_createHashHistory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! history/createHashHistory */ "./node_modules/history/createHashHistory.js");
-/* harmony import */ var history_createHashHistory__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(history_createHashHistory__WEBPACK_IMPORTED_MODULE_0__);
 
 
-/* harmony default export */ __webpack_exports__["default"] = (history_createHashHistory__WEBPACK_IMPORTED_MODULE_0___default()());
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _createHashHistory = __webpack_require__(/*! history/createHashHistory */ "./node_modules/history/createHashHistory.js");
+
+var _createHashHistory2 = _interopRequireDefault(_createHashHistory);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _createHashHistory2.default)();
 
 /***/ }),
 
@@ -43080,4 +43194,3 @@ module.exports = __webpack_require__(/*! ./src/index.jsx */"./src/index.jsx");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map
