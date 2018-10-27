@@ -1,7 +1,7 @@
 var cacheName = 'bs-0-0-0'
 var apiCacheName = 'api-0-0-0'
 var cacheFiles = [
-  './#',
+  '/#/',
   './index.html',
   './bundle.js',
   './style.css'
