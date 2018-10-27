@@ -42625,7 +42625,7 @@ __webpack_require__(/*! ./assets/fonts/iconfont.css */ "./src/assets/fonts/iconf
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js', { scope: './doubanPocket' }).then(function (registration) {
+  navigator.serviceWorker.register('./sw.js', { scope: './' }).then(function (registration) {
     return new Promise(function (resolve) {
       Notification.requestPermission();
       resolve(registration);
