@@ -42633,7 +42633,7 @@ if ('serviceWorker' in navigator) {
   }).then(function (registration) {
     var title = '口袋豆瓣PWA';
     var options = {
-      icon: 'doubanPocket/images/icons/book-128.png',
+      icon: 'images/icons/book-128.png',
       body: '欢迎使用口袋豆瓣PWA~~',
       tag: 'pwa-starter',
       renotify: true
