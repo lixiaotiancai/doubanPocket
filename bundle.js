@@ -10565,134 +10565,6 @@ module.exports = warning;
 
 /***/ }),
 
-/***/ "./node_modules/fetch-jsonp/build/fetch-jsonp.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/fetch-jsonp/build/fetch-jsonp.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, module], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else { var mod; }
-})(this, function (exports, module) {
-  'use strict';
-
-  var defaultOptions = {
-    timeout: 5000,
-    jsonpCallback: 'callback',
-    jsonpCallbackFunction: null
-  };
-
-  function generateCallbackFunction() {
-    return 'jsonp_' + Date.now() + '_' + Math.ceil(Math.random() * 100000);
-  }
-
-  function clearFunction(functionName) {
-    // IE8 throws an exception when you try to delete a property on window
-    // http://stackoverflow.com/a/1824228/751089
-    try {
-      delete window[functionName];
-    } catch (e) {
-      window[functionName] = undefined;
-    }
-  }
-
-  function removeScript(scriptId) {
-    var script = document.getElementById(scriptId);
-    if (script) {
-      document.getElementsByTagName('head')[0].removeChild(script);
-    }
-  }
-
-  function fetchJsonp(_url) {
-    var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-
-    // to avoid param reassign
-    var url = _url;
-    var timeout = options.timeout || defaultOptions.timeout;
-    var jsonpCallback = options.jsonpCallback || defaultOptions.jsonpCallback;
-
-    var timeoutId = undefined;
-
-    return new Promise(function (resolve, reject) {
-      var callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
-      var scriptId = jsonpCallback + '_' + callbackFunction;
-
-      window[callbackFunction] = function (response) {
-        resolve({
-          ok: true,
-          // keep consistent with fetch API
-          json: function json() {
-            return Promise.resolve(response);
-          }
-        });
-
-        if (timeoutId) clearTimeout(timeoutId);
-
-        removeScript(scriptId);
-
-        clearFunction(callbackFunction);
-      };
-
-      // Check if the user set their own params, and if not add a ? to start a list of params
-      url += url.indexOf('?') === -1 ? '?' : '&';
-
-      var jsonpScript = document.createElement('script');
-      jsonpScript.setAttribute('src', '' + url + jsonpCallback + '=' + callbackFunction);
-      if (options.charset) {
-        jsonpScript.setAttribute('charset', options.charset);
-      }
-      jsonpScript.id = scriptId;
-      document.getElementsByTagName('head')[0].appendChild(jsonpScript);
-
-      timeoutId = setTimeout(function () {
-        reject(new Error('JSONP request to ' + _url + ' timed out'));
-
-        clearFunction(callbackFunction);
-        removeScript(scriptId);
-        window[callbackFunction] = function () {
-          clearFunction(callbackFunction);
-        };
-      }, timeout);
-
-      // Caught if got 404/500
-      jsonpScript.onerror = function () {
-        reject(new Error('JSONP request to ' + _url + ' failed'));
-
-        clearFunction(callbackFunction);
-        removeScript(scriptId);
-        if (timeoutId) clearTimeout(timeoutId);
-      };
-    });
-  }
-
-  // export as global function
-  /*
-  let local;
-  if (typeof global !== 'undefined') {
-    local = global;
-  } else if (typeof self !== 'undefined') {
-    local = self;
-  } else {
-    try {
-      local = Function('return this')();
-    } catch (e) {
-      throw new Error('polyfill failed because global object is unavailable in this environment');
-    }
-  }
-  local.fetchJsonp = fetchJsonp;
-  */
-
-  module.exports = fetchJsonp;
-});
-
-/***/ }),
-
 /***/ "./node_modules/history/DOMUtils.js":
 /*!******************************************!*\
   !*** ./node_modules/history/DOMUtils.js ***!
@@ -38949,9 +38821,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getJson = exports.getReturnButtonText = exports.getHeaderText = exports.getSearchResultArrName = exports.getPageName = exports.getPlaceholder = exports.getCurrentPageId = exports.getAllPageId = exports.getPageConfig = undefined;
 
-var _fetchJsonp = __webpack_require__(/*! fetch-jsonp */ "./node_modules/fetch-jsonp/build/fetch-jsonp.js");
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _fetchJsonp2 = _interopRequireDefault(_fetchJsonp);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _config = __webpack_require__(/*! ../config */ "./src/config.js");
 
@@ -39058,6 +38930,86 @@ var getReturnButtonText = exports.getReturnButtonText = function getReturnButton
 };
 
 /**
+ * fetchJsonp
+ */
+var fetchJsonp = function fetchJsonp(url, option) {
+  function jsonp(url, callback) {
+    var _opt = _extends({
+      callbackName: 'callback',
+      functionName: getJsonpFunctionName(url),
+      data: {}
+    }, option);
+
+    var callbackName = _opt.callbackName,
+        functionName = _opt.functionName,
+        data = _opt.data;
+
+
+    data[callbackName] = functionName;
+
+    url = parseUrl(url, serialize(data));
+
+    addGlobalMethod();
+
+    createScipt(url);
+
+    function addGlobalMethod() {
+      if (window[functionName]) return;
+
+      window[functionName] = function (res) {
+        var p = new Promise(function (resolve, reject) {
+          callback(res);
+          resolve();
+        });
+
+        p.then(function () {
+          delete window[functionName];
+          var script = document.querySelector('script[src=\'' + url + '\']');
+          script.parentNode.removeChild(script);
+        });
+      };
+    }
+
+    function getJsonpFunctionName(url) {
+      var str = 'jsonp_';
+      var reg = url.match(/[^?|&]*?=.*?(?=&|$)/g);
+      reg.forEach(function (item) {
+        str += item.replace('=', '_') + '_';
+      });
+
+      return str;
+    }
+
+    function serialize(obj) {
+      if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) !== 'object') return '';
+
+      var ret = [];
+      for (var key in obj) {
+        ret.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
+      }
+
+      return ret.join('&');
+    }
+
+    function parseUrl(url, param) {
+      return url + (url.indexOf('?') === -1 ? '?' : '&') + param;
+    }
+
+    function createScipt(url) {
+      var script = document.createElement('script');
+      script.src = url;
+      document.body.appendChild(script);
+    }
+  }
+
+  return new Promise(function (resolve, reject) {
+    jsonp(url, function (res) {
+      return resolve(res);
+    });
+  });
+};
+
+/**
  * 获取json
  *
  * @param    {string}  type        搜索类型（图书？电影？音乐？or more...）
@@ -39068,38 +39020,33 @@ var getReturnButtonText = exports.getReturnButtonText = function getReturnButton
  */
 var getJson = exports.getJson = function () {
   var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(type, text, start) {
-    var URL, response, json;
+    var url, res;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            URL = getURL(type, text, start); // 取到请求的url
+            url = getURL(type, text, start); // 取到请求的url
 
             _context.prev = 1;
             _context.next = 4;
-            return (0, _fetchJsonp2.default)(URL);
+            return fetchJsonp(url);
 
           case 4:
-            response = _context.sent;
-            _context.next = 7;
-            return response.json();
+            res = _context.sent;
+            return _context.abrupt('return', res);
 
-          case 7:
-            json = _context.sent;
-            return _context.abrupt('return', json);
-
-          case 11:
-            _context.prev = 11;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context['catch'](1);
 
             console.log(_context.t0);
 
-          case 14:
+          case 11:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, undefined, [[1, 11]]);
+    }, _callee, undefined, [[1, 8]]);
   }));
 
   return function getJson(_x3, _x4, _x5) {
@@ -42676,6 +42623,32 @@ __webpack_require__(/*! ./scss/style.scss */ "./src/scss/style.scss");
 __webpack_require__(/*! ./assets/fonts/iconfont.css */ "./src/assets/fonts/iconfont.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').then(function (registration) {
+    return new Promise(function (resolve) {
+      Notification.requestPermission();
+      resolve(registration);
+    });
+  }).then(function (registration) {
+    var title = '口袋豆瓣PWA';
+    var options = {
+      icon: '/images/icons/book-128.png',
+      body: '欢迎使用口袋豆瓣PWA~~',
+      tag: 'pwa-starter',
+      renotify: true
+    };
+
+    var timer = null;
+
+    if (!timer) {
+      timer = setTimeout(function () {
+        registration.showNotification(title, options);
+        timer = null;
+      }, 3000);
+    }
+  });
+}
 
 var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
