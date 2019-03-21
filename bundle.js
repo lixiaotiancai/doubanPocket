@@ -38977,6 +38977,8 @@ var fetchJsonp = function fetchJsonp(url, option) {
         str += item.replace('=', '_') + '_';
       });
 
+      str = encodeURIComponent(str).replace(/[^\w]/g, '');
+
       return str;
     }
 
@@ -41333,7 +41335,7 @@ Object.defineProperty(exports, "__esModule", {
  ********************************************************************************/
 
 var config = {
-  currentPageId: 'book', // 初始显示的页面
+  currentPageId: 'movie', // 初始显示的页面
 
   searchListCount: 10, // 搜索 和 刷新每次显示的条目数
 
@@ -41394,7 +41396,7 @@ var config = {
   // 页面配置 (只注释第一页 下同)
   page: [{
     pageId: 'book', // 每个page独有的ID，用于识别
-    pageName: '图书', // 页面名称
+    pageName: '图书(不可用)', // 页面名称
     icon: 'book', // 图标
     // 搜索页配置
     searchPage: {

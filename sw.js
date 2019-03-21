@@ -86,7 +86,7 @@ self.addEventListener('fetch', function (e) {
 })
 
 self.addEventListener('activate', function (e) {
-  console.log('Service Worker 状态： activate')
+  // console.log('Service Worker 状态： activate')
   var cachePromise = caches.keys().then(function (keys) {
     return Promise.all(keys.map(function (key) {
       if (key !== cacheName && key !== apiCacheName) {
